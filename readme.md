@@ -13,7 +13,7 @@
 
 ## Key Mappings
 
-- leader = "<Space>"
+- leader = " "
 
 | keys | desc |
 |--------|----------|
