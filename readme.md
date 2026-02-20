@@ -13,6 +13,8 @@
 
 ## Key Mappings
 
+- leader = "<Space>"
+
 | keys | desc |
 |--------|----------|
 | `jk` (insert mode) | Esc |
