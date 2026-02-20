@@ -21,10 +21,10 @@
 | `gl` (normal/visual) | goto line end |
 | `gh` (normal/visual) | goto line start |
 | `ge` (normal/visual) | goto last line |
-| `gy` (normal/visual) | copy to clipboard |
 | `gp` (normal) | got previous buffer |
 | `gn` (normal) | goto next buffer |
 | `gb` (normal) | goto specified buffer |
+| `gy` (normal/visual) | copy to clipboard |
 | `<C-a>` (normal) | select all |
 | `<C-s>` (normal) | write |
 | `<C-x>` (normal) | close current buffer |
