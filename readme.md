@@ -19,38 +19,37 @@
 | `gl` (normal/visual) | goto line end |
 | `gh` (normal/visual) | goto line start |
 | `ge` (normal/visual) | goto last line |
-| `gy` (visual) | copy to clipboard |
-| `gy` (normal) | copy to clipboard |
+| `gy` (normal/visual) | copy to clipboard |
 | `<C-a>` (normal) | select all |
-| `<leader>f` | find files |
-| `<leader>C` | find nvim config files |
-| `<leader>d` | Search Diagnostics |
-| `<leader>k` | Search keymaps |
-| `<leader>S` | Search LSP dynamic workspace symbols |
-| `<leader>s` | Search LSP document symbols |
+| `<leader>f` (normal) | find files |
+| `<leader>C` (normal) | find nvim config files |
+| `<leader>d` (normal) | Search Diagnostics |
+| `<leader>k` (normal) | Search keymaps |
+| `<leader>S` (normal) | Search LSP dynamic workspace symbols |
+| `<leader>s` (normal) | Search LSP document symbols |
 | `K` | Lspsaga: Hover Documentation |
-| `gr` | Lspsaga: LSP Finder |
-| `gi` | Lspsaga: LSP Finder (imports) |
-| `gs` | Lspsaga: Peek Definition |
-| `gd` | Lspsaga: Goto Definition |
-| `<leader>r` | Lspsaga: Rename in Project |
-| `<leader>a` | Lspsaga: Code Action |
-| `<leader>o` | Lspsaga: Toggle Outline |
-| `gt` | Lspsaga: Toggle Terminal |
-| `<leader>e` | toggle nvim-tree |
+| `gr` (normal) | Lspsaga: LSP Finder (references) |
+| `gi` (normal) | Lspsaga: LSP Finder (implementations) |
+| `gs` (normal) | Lspsaga: Peek Definition |
+| `gd` (normal) | Lspsaga: Goto Definition |
+| `<leader>r` (normal) | Lspsaga: Rename in Project |
+| `<leader>a` (normal) | Lspsaga: Code Action |
+| `<leader>o` (normal) | Lspsaga: Toggle Outline |
+| `gt` (normal) | Lspsaga: Toggle Terminal |
+| `<leader>e` (normal) | toggle nvim-tree |
 | `s` (normal/visual/operator) | Flash |
 | `S` (normal/visual/operator) | Flash Treesitter |
 | `r` (operator) | Remote Flash |
 | `R` (operator/visual) | Treesitter Search |
 | `<c-s>` (command) | Toggle Flash Search |
-| `gp` | got previous buffer |
-| `gn` | goto next buffer |
-| `gb` | goto specified buffer |
-| `<C-x>` | close current buffer |
+| `gp` (normal) | got previous buffer |
+| `gn` (normal) | goto next buffer |
+| `gb` (normal) | goto specified buffer |
+| `<C-x>` (normal) | close current buffer |
 | `w` (normal/operator/visual) | spider motion w |
 | `e` (normal/operator/visual) | spider motion e |
 | `b` (normal/operator/visual) | spider motion b |
-| `<leader>R` | replace in workspace |
+| `<leader>R` (normal) | replace in workspace |
 
 ## gallery
 ![neovim](https://github.com/moqsien/neovim_conf/blob/main/imgs/neovim.png)
