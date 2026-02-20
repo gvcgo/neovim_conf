@@ -24,6 +24,6 @@ return {
 		{ "<leader>a", "<cmd>Lspsaga code_action<CR>", mode = { "n", "v" }, desc = "Lspsaga: Code Action" },
 		{ "<leader>o", "<cmd>Lspsaga outline<CR>", desc = "Lspsaga: Toggle Outline" },
 
-		{ "<A-d>", "<cmd>Lspsaga term_toggle<CR>", mode = { "n", "t" }, desc = "Lspsaga: Toggle Terminal" },
+		{ "gt", "<cmd>Lspsaga term_toggle<CR>", mode = { "n", "t" }, desc = "Lspsaga: Toggle Terminal" },
 	},
 }
