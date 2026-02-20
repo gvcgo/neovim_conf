@@ -12,7 +12,6 @@
 - make
 
 ## gallery
-
 ![neovim](https://github.com/moqsien/neovim_conf/blob/main/imgs/neovim.png)
 ![telescope](https://github.com/moqsien/neovim_conf/blob/main/imgs/neovim_telescope.png)
 
