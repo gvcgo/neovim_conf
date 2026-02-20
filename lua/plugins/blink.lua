@@ -28,13 +28,7 @@ return {
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 		keymap = {
 			preset = "enter",
-			["<C-y>"] = {
-				function(cmp)
-					-- require("minuet").make_blink_map()
-					cmp.show({ providers = { "minuet" } })
-				end,
-			},
-			["<A-y>"] = require("minuet").make_blink_map(),
+			["<C-y>"] = require("minuet").make_blink_map(),
 		},
 
 		appearance = {
