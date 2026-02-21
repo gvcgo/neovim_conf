@@ -31,7 +31,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		if arg == "" or vim.fn.isdirectory(arg) == 0 then
 			return
 		end
+
 		vim.cmd.cd(arg)
+		vim.bo.buflisted = false
 
 		vim.schedule(function()
 			require("telescope.builtin").find_files()
