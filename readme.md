@@ -10,6 +10,7 @@
 - tar
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
 - make
+- [opencode](https://github.com/anomalyco/opencode)
 
 ## Key Mappings
 
