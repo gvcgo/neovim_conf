@@ -28,6 +28,9 @@
 | `<C-a>` (normal) | select all |
 | `<C-s>` (normal) | write |
 | `<C-x>` (normal) | close current buffer |
+| `<leader>a` (normal/visual) | Ask opencode… |
+| `<leader>x` (normal/visual) | Execute opencode action… |
+| `<leader>.` (normal/terminal) | Toggle opencode |
 | `<C-y>` (insert) | minuet ai completion(manually invoke) |
 | `<C-l>` (insert) | minuet ai completion(accept) |
 | `<C-[>` (insert) | minuet ai completion(previous) |
