@@ -14,6 +14,15 @@
 - [opencode](https://github.com/anomalyco/opencode)
 - [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode)
 
+## Envs
+
+```bash
+# example
+export AI_END_POINT="https://api.longcat.chat/openai/v1/chat/completions"
+export AI_API_KEY="xxx"
+export AI_MODEL="xxx"
+```
+
 ## Key Mappings
 
 - leader = " "
