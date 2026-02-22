@@ -73,6 +73,22 @@ export AI_MODEL="xxx"
 | `r` (operator) | Remote Flash |
 | `R` (operator/visual) | Treesitter Search |
 | `<C-s>` (command) | Toggle Flash Search |
+| `ms` (normal) | swap next parameter inner |
+| `mS` (normal) | swap previous parameter outer |
+| `]f` (normal/visual/operator) | goto next function start |
+| `]c` (normal/visual/operator) | goto next class start |
+| `[F` (normal/visual/operator) | goto previous function start |
+| `[C` (normal/visual/operator) | goto previous class start |
+
+## tree-sitter textobjects
+
+| `af` (visual/operator) | select function outer |
+| `if` (visual/operator) | select function inner |
+| `ac` (visual/operator) | select class outer |
+| `ic` (visual/operator) | select class inner |
+| `aa` (visual/operator) | select parameter outer |
+| `ia` (visual/operator) | select parameter inner |
+| `as` (visual/operator) | select local scope |
 
 ## gallery
 
