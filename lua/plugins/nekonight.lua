@@ -22,11 +22,24 @@ return {
 				hl.Visual = {
 					bg = "#364A82",
 					fg = "NONE",
-					-- fg = colors.bg_dark,
 				}
 				hl.DiagnosticUnnecessary = {
 					fg = "#7A88CF",
 					italic = true,
+				}
+
+				hl.CursorLine = {
+					bg = "#2e3c64",
+				}
+
+				hl.PmenuSel = {
+					bg = "#7aa2f7",
+					fg = "#15161e",
+					bold = true,
+				}
+
+				hl.PmenuThumb = {
+					bg = "#3b4261",
 				}
 			end,
 		})
