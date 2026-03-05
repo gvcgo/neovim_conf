@@ -111,6 +111,8 @@ export AI_MODEL="LongCat-Flash-Lite"
 | `<A-k>` (normal/visual) | Move line/block up |
 | `<A-h>` (normal/visual) | Move word/horizontal block left |
 | `<A-l>` (normal/visual) | Move word/horizontal block right |
+| `<leader>ll` (normal/visual) | CopilotChat - explain code |
+| `<leader>lt` (normal/visual) | CopilotChat - toggle chat |
 
 ## tree-sitter textobjects
 
@@ -149,6 +151,8 @@ export AI_MODEL="LongCat-Flash-Lite"
 - [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim) - LSP UI enhancements
 - [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) - LSP configuration with Mason
 - [noice.nvim](https://github.com/folke/noice.nvim) - UI enhancements and command history
+- [copilot.lua](https://github.com/zbirenbaum/copilot.lua) - GitHub Copilot plugin(for login only)
+- [CopilotChat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim) - AI chat interface for GitHub Copilot
 - [opencode.nvim](https://github.com/nickjvandyke/opencode.nvim) - AI-powered coding assistant
 - [nvim-spider](https://github.com/chrisgrieser/nvim-spider) - Enhanced word motion
 - [nvim-surround](https://github.com/kylechui/nvim-surround) - Surround text objects
@@ -166,6 +170,7 @@ export AI_MODEL="LongCat-Flash-Lite"
 
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - Utility library
 - [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - FZF native extension for Telescope
+- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - Utility library (dependency for CopilotChat)
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - Web devicons
 - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - Snippet collection
 - [mason.nvim](https://github.com/mason-org/mason.nvim) - Package manager
