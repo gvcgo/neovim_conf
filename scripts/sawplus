@@ -1,0 +1,70 @@
+#!/usr/bin/zsh
+
+# Check arguments
+if [ "$#" -lt 3 ]; then
+    echo "Usage: sawplus <env(dev|beta)> <duration_in_minutes> <group_keywords> "
+    exit 1
+fi
+
+ENV=$1
+START_TIME=$2
+GROUP_KEYWORDS=("${@:3}")
+
+if ! command -v saw &> /dev/null; then
+  go install "github.com/TylerBrock/saw@latest"
+fi
+
+# 1. Map environment to AWS Region
+case $ENV in
+    dev)
+        REGION="ap-southeast-1"
+        ;;
+    beta)
+        REGION="us-west-2"
+        ;;
+    *)
+        echo "Error: Environment must be 'dev' or 'beta'"
+        exit 1
+esac
+
+MATCHED_GROUPS=$(saw groups --region "$REGION" | rg "$ENV")
+
+function findGroupName() {
+    # Loop through keywords to narrow down the search (AND logic)
+    for word in $GROUP_KEYWORDS; do
+        MATCHED_GROUPS=$(echo "$MATCHED_GROUPS" | rg -i "$word")
+    done
+}
+findGroupName
+
+# Count how many groups matched
+GROUP_COUNT=$(echo "$MATCHED_GROUPS" | rg -c /)
+
+if [ "$GROUP_COUNT" -eq 0 ]; then
+    echo "Error: No log group found matching '$GROUP_KEYWORDS'."
+    exit 1
+elif [ "$GROUP_COUNT" -gt 1 ]; then
+    echo "Error: Multiple matches found. Please be more specific:"
+    echo "$MATCHED_GROUPS"
+    exit 1
+fi
+
+# Final log group name
+FINAL_GROUP=$(echo "$MATCHED_GROUPS" | xargs)
+echo "Target Log Group: $FINAL_GROUP"
+
+# 3. Fetch logs to a temporary file
+TEMP_FILE="/tmp/aws_logs_$(date +%s).log"
+
+# saw get with --start parameter (adding 'm' suffix for minutes)
+saw get --region "$REGION" --start "-${START_TIME}m" --pretty --expand "$FINAL_GROUP" > "$TEMP_FILE" 
+
+# 4. Open with Helix
+alias hx="fcode stop && fcode serve>/dev/null 2>&1 & ; helix"
+if [ -s "$TEMP_FILE" ]; then
+    nv "$TEMP_FILE"
+    rm "$TEMP_FILE"
+else
+    echo "No logs found in the specified time range."
+    rm "$TEMP_FILE"
+fi
