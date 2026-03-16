@@ -4,8 +4,9 @@ return {
 	priority = 1000,
 	opts = {},
 	config = function()
-		local nn = require("nekonight")
-		nn.setup({
+		local nekonight = require("nekonight")
+
+		nekonight.setup({
 			transparent = true,
 			-- use the night style
 			style = "dracula-at-night",
@@ -44,6 +45,6 @@ return {
 			end,
 		})
 
-		nn.load()
+		nekonight.load()
 	end,
 }
