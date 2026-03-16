@@ -46,10 +46,14 @@ return {
 
 		vim.keymap.set("n", "<leader>S", function()
 			builtin.lsp_dynamic_workspace_symbols()
-		end, { desc = "Search keymaps" })
+		end, { desc = "Search workspace symbols" })
 
 		vim.keymap.set("n", "<leader>s", function()
 			builtin.lsp_document_symbols()
-		end, { desc = "Search keymaps" })
+		end, { desc = "Search document symbols" })
+
+		vim.keymap.set("n", "<leader>/", function()
+			builtin.live_grep()
+		end, { desc = "Search string" })
 	end,
 }

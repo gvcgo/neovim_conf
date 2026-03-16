@@ -66,6 +66,7 @@ export AI_MODEL="LongCat-Flash-Lite"
 | `<leader>k` (normal) | Search keymaps |
 | `<leader>S` (normal) | Search LSP dynamic workspace symbols |
 | `<leader>s` (normal) | Search LSP document symbols |
+| `<leader>/` (normal) | Search string (live grep) |
 | `K` | Lspsaga: Hover Documentation |
 | `gr` (normal) | Lspsaga: LSP Finder (references) |
 | `gi` (normal) | Lspsaga: LSP Finder (implementations) |
