@@ -9,6 +9,12 @@ return {
 		local ai_end_point = vim.env.AI_END_POINT
 		require("minuet").setup({
 			provider = "openai_compatible",
+			cmp = {
+				enable_auto_complete = false,
+			},
+			blink = {
+				enable_auto_complete = false,
+			},
 			provider_options = {
 				openai_compatible = {
 					-- model = "LongCat-Flash-Chat",
