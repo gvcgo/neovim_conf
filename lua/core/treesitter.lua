@@ -13,7 +13,8 @@ vim.api.nvim_create_autocmd("FileType", {
 		"yaml",
 		"proto",
 	},
-	callback = function()
-		vim.treesitter.start()
+	callback = function(args)
+		-- vim.treesitter.start()
+		pcall(vim.treesitter.start, args.buf)
 	end,
 })
