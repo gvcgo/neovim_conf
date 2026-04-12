@@ -67,15 +67,14 @@ export AI_MODEL="LongCat-Flash-Lite"
 | `<leader>S` (normal) | Search LSP dynamic workspace symbols |
 | `<leader>s` (normal) | Search LSP document symbols |
 | `<leader>/` (normal) | Search string (live grep) |
-| `K` | Lspsaga: Hover Documentation |
-| `gr` (normal) | Lspsaga: LSP Finder (references) |
-| `gi` (normal) | Lspsaga: LSP Finder (implementations) |
-| `gs` (normal) | Lspsaga: Peek Definition |
-| `gd` (normal) | Lspsaga: Goto Definition |
-| `gt` (normal) | Lspsaga: Toggle Terminal |
-| `<leader>r` (normal) | Lspsaga: Rename in Project |
-| `<leader>c` (normal) | Lspsaga: Code Action |
-| `<leader>o` (normal) | Lspsaga: Toggle Outline |
+| `K` (normal) | LspUI: Hover Documentation |
+| `gr` (normal) | LspUI: LSP Finder (references) |
+| `gi` (normal) | LspUI: LSP Finder (implementations) |
+| `gs` (normal) | LspUI: Peek Definition |
+| `gd` (normal) | LspUI: Goto Definition |
+| `<leader>r` (normal) | LspUI: Rename in Project |
+| `<leader>c` (normal) | LspUI: Code Action |
+| `<leader>jh` (normal) | LspUI: Jump History |
 | `<leader>e` (normal) | toggle nvim-tree |
 | `<leader>R` (normal) | replace in workspace |
 | `w` (normal/operator/visual) | spider motion w |
@@ -149,7 +148,7 @@ export AI_MODEL="LongCat-Flash-Lite"
 - [synthweave.nvim](https://github.com/samharju/synthweave.nvim) - Synthwave '84 colorscheme port for Neovim
 - [grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim) - Find and replace across workspace
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) - Indent line visualization
-- [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim) - LSP UI enhancements
+- [LspUI.nvim](https://github.com/jinzhongjia/LspUI.nvim) - LSP UI enhancements
 - [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) - LSP configuration with Mason
 - [noice.nvim](https://github.com/folke/noice.nvim) - UI enhancements and command history
 - [copilot.lua](https://github.com/zbirenbaum/copilot.lua) - GitHub Copilot plugin(for login only)
@@ -183,4 +182,3 @@ export AI_MODEL="LongCat-Flash-Lite"
 ### Other References
 
 - [awesome neovim](https://github.com/rockerBOO/awesome-neovim)
-
