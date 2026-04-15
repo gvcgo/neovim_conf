@@ -166,6 +166,7 @@ export AI_MODEL="LongCat-Flash-Lite"
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git integration with signs
 - [gitlinker.nvim](https://github.com/linrongbin16/gitlinker.nvim) - Generate shareable links to code on GitHub, GitLab, etc.
 - [move.nvim](https://github.com/hinell/move.nvim) - Move lines and blocks with Alt+direction keys
+- [garbage-day.nvim](https://github.com/Zeioth/garbage-day.nvim) - Garbage collector that stops inactive LSP clients to free RAM
 
 ### Plugin Dependencies
 
