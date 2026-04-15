@@ -72,6 +72,7 @@ export AI_MODEL="LongCat-Flash-Lite"
 | `gi` (normal) | LspUI: LSP Finder (implementations) |
 | `gs` (normal) | LspUI: Peek Definition |
 | `gd` (normal) | LspUI: Goto Definition |
+| `<leader>lr` (normal) | restart lsp |
 | `<leader>r` (normal) | LspUI: Rename in Project |
 | `<leader>c` (normal) | LspUI: Code Action |
 | `<leader>jh` (normal) | LspUI: Jump History |
