@@ -44,6 +44,13 @@ git sparse-checkout set init.lua lazy-lock.json lua
 :TSInstall lua rust javascript go markdown bash zsh cpp json typescript yaml proto
 ```
 
+## Terminal Proxy
+
+```bash
+alias OnProxy="export http_proxy=http://127.0.0.1:2023;export https_proxy=http://127.0.0.1:2023;export no_proxy=127.0.0.1,localhost,::1"
+alias OffProxy="unset http_proxy;unset https_proxy"
+```
+
 ## Key Mappings
 
 - leader = " "
