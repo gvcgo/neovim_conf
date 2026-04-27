@@ -14,7 +14,6 @@
 - [opencode](https://github.com/anomalyco/opencode)
 - [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode)
 - [superpowers](https://github.com/obra/superpowers/blob/main/docs/README.opencode.md)
-- [iflow](https://github.com/iflow-ai/iflow-cli)
 
 ## Envs
 
