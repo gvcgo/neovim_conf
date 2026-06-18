@@ -2,6 +2,7 @@ return {
 	"numToStr/Comment.nvim",
 	event = "VeryLazy",
 	opts = {},
+	enabled = false,
 	config = function()
 		require("Comment").setup({
 			---Add a space b/w comment and the line

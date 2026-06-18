@@ -28,7 +28,6 @@ return {
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 		keymap = {
 			preset = "enter",
-			["<C-y>"] = require("minuet").make_blink_map(),
 		},
 
 		appearance = {
@@ -40,25 +39,21 @@ return {
 		-- (Default) Only show the documentation popup when manually triggered
 		completion = {
 			documentation = { auto_show = true },
-			list = { selection = {
-				preselect = function()
-					return vim.bo.filetype ~= "markdown"
-				end,
-			} },
+			list = {
+				selection = {
+					preselect = function()
+						return vim.bo.filetype ~= "markdown"
+					end,
+					auto_insert = false,
+				},
+			},
 			trigger = { prefetch_on_insert = false },
 		},
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "minuet" },
-			providers = {
-				minuet = {
-					name = "minuet",
-					module = "minuet.blink",
-					score_offset = 8,
-				},
-			},
+			default = { "lsp", "path", "snippets", "buffer" },
 		},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

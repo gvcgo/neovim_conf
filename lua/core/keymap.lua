@@ -10,3 +10,6 @@ vim.keymap.set("n", "<leader>y", '"+yy', { desc = "copy to clipboard" })
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "select all" })
 vim.keymap.set("n", "<C-s>", ":w!<CR>", { desc = "write" })
 vim.keymap.set("n", "<leader>lr", "<cmd>lsp restart<CR>", { desc = "restart lsp" })
+
+vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle comment line" })
+vim.keymap.set("v", "<leader>/", "gc", { remap = true, desc = "Toggle comment block" })

@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	enabled = false,
 	config = function()
 		local ai_model = vim.env.AI_MODEL
 		local ai_end_point = vim.env.AI_END_POINT
