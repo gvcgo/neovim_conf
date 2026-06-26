@@ -61,6 +61,8 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `jk` (insert) | Esc |
 | `gl` (normal/visual) | goto line end |
 | `gh` (normal/visual) | goto line start |
+| `gj` (normal) | goto screen bottom |
+| `gk` (normal) | goto screen top |
 | `ge` (normal/visual) | goto last line |
 | `gp` (normal) | got previous buffer |
 | `gn` (normal) | goto next buffer |
