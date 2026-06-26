@@ -146,6 +146,8 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `aa` (visual/operator) | select parameter outer |
 | `ia` (visual/operator) | select parameter inner |
 | `as` (visual/operator) | select local scope |
+| `ii` (operator) | subword(inner) |
+| `as` (operator) | subword(outter) |
 
 ## gallery
 
@@ -187,6 +189,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [gitlinker.nvim](https://github.com/linrongbin16/gitlinker.nvim) - Generate shareable links to code on GitHub, GitLab, etc.
 - [move.nvim](https://github.com/hinell/move.nvim) - Move lines and blocks with Alt+direction keys
 - [garbage-day.nvim](https://github.com/Zeioth/garbage-day.nvim) - Garbage collector that stops inactive LSP clients to free RAM
+- [nvim-various-textobjs](https://github.com/chrisgrieser/nvim-various-textobjs) - Bundle of more than 30 new text objects for Neovim
 
 ### Plugin Dependencies
 
