@@ -13,7 +13,9 @@
 - make
 - [opencode](https://github.com/anomalyco/opencode)
 - [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode)
+- [oh-my-opencode-slim](https://github.com/alvinunreal/oh-my-opencode-slim)
 - [superpowers](https://github.com/obra/superpowers/blob/main/docs/README.opencode.md)
+- [superpowers-zh](https://github.com/jnMetaCode/superpowers-zh)
 
 ## Envs
 
