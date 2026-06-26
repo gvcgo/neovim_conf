@@ -12,6 +12,7 @@ vim.keymap.set("n", "<C-s>", ":w!<CR>", { desc = "write" })
 vim.keymap.set("n", "<leader>lr", "<cmd>lsp restart<CR>", { desc = "restart lsp" })
 vim.keymap.set("n", "gj", "Lzz", { desc = "goto screen bottom" })
 vim.keymap.set("n", "gk", "Hzz", { desc = "goto screen top" })
+vim.keymap.set("x", "q", "<Esc>", { noremap = true, silent = true, desc = "Exit visual mode" })
 
 vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle comment line" })
 vim.keymap.set("v", "<leader>/", "gc", { remap = true, desc = "Toggle comment block" })
