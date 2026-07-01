@@ -4,6 +4,7 @@
 - Git
 - [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [fzf](https://github.com/junegunn/fzf)
 - curl
 - [fd](https://github.com/sharkdp/fd) 
 - unzip
