@@ -35,8 +35,11 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		vim.cmd.cd(arg)
 		vim.bo.buflisted = false
 
+		-- vim.schedule(function()
+		-- 	require("telescope.builtin").find_files()
+		-- end)
 		vim.schedule(function()
-			require("telescope.builtin").find_files()
+			require("fzf-lua").files()
 		end)
 	end,
 })

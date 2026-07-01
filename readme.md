@@ -120,7 +120,6 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `[d` (normal) | Previous todo comment |
 | `<leader>gb` (normal/visual) | Open git blame link |
 | `<leader>gg` (normal/visual) | Open git link |
-| `<leader>gg` (normal/visual) | Open git link |
 | `gcc` (normal) | Line-comment toggle |
 | `gbc` (normal) | Block-comment toggle |
 | `gc` (normal/visual) | Line-comment operator |
@@ -190,6 +189,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [move.nvim](https://github.com/hinell/move.nvim) - Move lines and blocks with Alt+direction keys
 - [garbage-day.nvim](https://github.com/Zeioth/garbage-day.nvim) - Garbage collector that stops inactive LSP clients to free RAM
 - [nvim-various-textobjs](https://github.com/chrisgrieser/nvim-various-textobjs) - Bundle of more than 30 new text objects for Neovim
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua) - Improved fzf.vim written in lua
 
 ### Plugin Dependencies
 
