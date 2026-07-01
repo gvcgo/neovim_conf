@@ -121,6 +121,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `[d` (normal) | Previous todo comment |
 | `<leader>gb` (normal/visual) | Open git blame link |
 | `<leader>gg` (normal/visual) | Open git link |
+| `<leader>gc` (normal) | search git commits for current buffer |
 | `gcc` (normal) | Line-comment toggle |
 | `gbc` (normal) | Block-comment toggle |
 | `gc` (normal/visual) | Line-comment operator |

@@ -56,5 +56,9 @@ return {
 		vim.keymap.set("n", "<leader>/", function()
 			fzf.live_grep()
 		end, { desc = "Search string" })
+
+		vim.keymap.set("n", "<leader>gc", function()
+			fzf.git_bcommits()
+		end, { desc = "Search git commit for current buffer" })
 	end,
 }
