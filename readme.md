@@ -150,7 +150,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `ia` (visual/operator) | select parameter inner | `plugins/treesitter-textobjects.lua` |
 | `as` (visual/operator) | select local scope | `plugins/treesitter-textobjects.lua` |
 | `ii` (operator) | select subword inner | `plugins/textobjs.lua` |
-| `as` (operator) | select subword outter | `plugins/textobjs.lua` |
+| `ai` (operator) | select subword outter | `plugins/textobjs.lua` |
 
 ## gallery
 
