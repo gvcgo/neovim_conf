@@ -59,98 +59,98 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 
 - leader = " "
 
-| keys | desc |
-|--------|----------|
-| `jk` (insert) | Esc |
-| `gl` (normal/visual) | goto line end |
-| `gh` (normal/visual) | goto line start |
-| `gj` (normal) | goto screen bottom |
-| `gk` (normal) | goto screen top |
-| `ge` (normal/visual) | goto last line |
-| `gp` (normal) | got previous buffer |
-| `gn` (normal) | goto next buffer |
-| `gm` (normal) | goto specified buffer |
-| `<leader>y` (normal/visual) | copy to clipboard |
-| `<C-a>` (normal) | select all |
-| `<C-s>` (normal) | write |
-| `<C-x>` (normal) | close current buffer |
-| `<leader>a` (normal/visual) | Ask opencode… |
-| `<leader>x` (normal/visual) | Execute opencode action… |
-| `<leader>.` (normal/terminal) | Toggle opencode |
-| `<C-y>` (insert) | minuet ai completion(manually invoke) |
-| `<C-l>` (insert) | minuet ai completion(accept) |
-| `<C-[>` (insert) | minuet ai completion(previous) |
-| `<C-]>` (insert) | minuet ai completion(next) |
-| `<leader>t` (normal) | Open todos in telescope |
-| `<C-p>` (insert) | minuet ai completion(dismiss) |
-| `<leader>f` (normal) | find files |
-| `<leader>C` (normal) | find nvim config files |
-| `<leader>d` (normal) | Search Diagnostics |
-| `<leader>k` (normal) | Search keymaps |
-| `<leader>S` (normal) | Search LSP dynamic workspace symbols |
-| `<leader>s` (normal) | Search LSP document symbols |
-| `<leader>/` (normal) | Search string (live grep) |
-| `K` (normal) | LspUI: Hover Documentation |
-| `gr` (normal) | LspUI: LSP Finder (references) |
-| `gi` (normal) | LspUI: LSP Finder (implementations) |
-| `gs` (normal) | LspUI: Peek Definition |
-| `gd` (normal) | LspUI: Goto Definition |
-| `<leader>lr` (normal) | restart lsp |
-| `<leader>r` (normal) | LspUI: Rename in Project |
-| `<leader>c` (normal) | LspUI: Code Action |
-| `<leader>jh` (normal) | LspUI: Jump History |
-| `<leader>e` (normal) | toggle nvim-tree |
-| `<leader>R` (normal) | replace in workspace |
-| `w` (normal/operator/visual) | spider motion w |
-| `e` (normal/operator/visual) | spider motion e |
-| `b` (normal/operator/visual) | spider motion b |
-| `s` (normal/visual/operator) | Flash |
-| `S` (normal/visual/operator) | Flash Treesitter |
-| `r` (operator) | Remote Flash |
-| `R` (operator/visual) | Treesitter Search |
-| `<C-s>` (command) | Toggle Flash Search |
-| `ms` (normal) | swap next parameter inner |
-| `mS` (normal) | swap previous parameter outer |
-| `]f` (normal/visual/operator) | goto next function start |
-| `]c` (normal/visual/operator) | goto next class start |
-| `]t` (normal/visual/operator) | goto next class end |
-| `]m` (normal/visual/operator) | goto next function end |
-| `[f` (normal/visual/operator) | goto previous function start |
-| `[c` (normal/visual/operator) | goto previous class start |
-| `[t` (normal/visual/operator) | goto previous class end |
-| `[m` (normal/visual/operator) | goto previous function end |
-| `]d` (normal) | Next todo comment |
-| `[d` (normal) | Previous todo comment |
-| `<leader>gb` (normal/visual) | Open git blame link |
-| `<leader>gg` (normal/visual) | Open git link |
-| `<leader>gc` (normal) | search git commits for current buffer |
-| `gcc` (normal) | Line-comment toggle |
-| `gbc` (normal) | Block-comment toggle |
-| `gc` (normal/visual) | Line-comment operator |
-| `gb` (normal/visual) | Block-comment operator |
-| `gcO` (normal) | Add comment on line above |
-| `gco` (normal) | Add comment on line below |
-| `gcA` (normal) | Add comment at end of line |
-| `<A-j>` (normal/visual) | Move line/block down |
-| `<A-k>` (normal/visual) | Move line/block up |
-| `<A-h>` (normal/visual) | Move word/horizontal block left |
-| `<A-l>` (normal/visual) | Move word/horizontal block right |
-| `<leader>ll` (normal/visual) | CopilotChat - explain code |
-| `<leader>lt` (normal/visual) | CopilotChat - toggle chat |
+| keys | desc | lua file |
+|--------|----------|----------|
+| `jk` (insert) | Esc | `core/keymap.lua` |
+| `gl` (normal/visual) | goto line end | `core/keymap.lua` |
+| `gh` (normal/visual) | goto line start | `core/keymap.lua` |
+| `gj` (normal) | goto screen bottom | `core/keymap.lua` |
+| `gk` (normal) | goto screen top | `core/keymap.lua` |
+| `ge` (normal/visual) | goto last line | `core/keymap.lua` |
+| `gp` (normal) | got previous buffer | `plugins/bufferline.lua` |
+| `gn` (normal) | goto next buffer | `plugins/bufferline.lua` |
+| `gm` (normal) | goto specified buffer | `plugins/bufferline.lua` |
+| `<leader>y` (normal/visual) | copy to clipboard | `core/keymap.lua` |
+| `<C-a>` (normal) | select all | `core/keymap.lua` |
+| `<C-s>` (normal) | write | `core/keymap.lua` |
+| `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
+| `<leader>a` (normal/visual) | Ask opencode… | `plugins/opencode.lua` |
+| `<leader>x` (normal/visual) | Execute opencode action… | `plugins/opencode.lua` |
+| `<leader>.` (normal/terminal) | Toggle opencode | `plugins/opencode.lua` |
+| `<C-y>` (insert) | minuet ai completion(manually invoke) | `plugins/ai.lua` |
+| `<C-l>` (insert) | minuet ai completion(accept) | `plugins/ai.lua` |
+| `<C-[>` (insert) | minuet ai completion(previous) | `plugins/ai.lua` |
+| `<C-]>` (insert) | minuet ai completion(next) | `plugins/ai.lua` |
+| `<leader>t` (normal) | Open todos in telescope | `plugins/todo.lua` |
+| `<C-p>` (insert) | minuet ai completion(dismiss) | `plugins/ai.lua` |
+| `<leader>f` (normal) | find files | `plugins/fzf.lua` |
+| `<leader>C` (normal) | find nvim config files | `plugins/fzf.lua` |
+| `<leader>d` (normal) | Search Diagnostics | `plugins/fzf.lua` |
+| `<leader>k` (normal) | Search keymaps | `plugins/fzf.lua` |
+| `<leader>S` (normal) | Search LSP dynamic workspace symbols | `plugins/fzf.lua` |
+| `<leader>s` (normal) | Search LSP document symbols | `plugins/fzf.lua` |
+| `<leader>/` (normal) | Search string (live grep) | `plugins/fzf.lua` |
+| `K` (normal) | LspUI: Hover Documentation | `plugins/lspui.lua` |
+| `gr` (normal) | LspUI: LSP Finder (references) | `plugins/lspui.lua` |
+| `gi` (normal) | LspUI: LSP Finder (implementations) | `plugins/lspui.lua` |
+| `gs` (normal) | LspUI: Peek Definition | `plugins/lspui.lua` |
+| `gd` (normal) | LspUI: Goto Definition | `plugins/lspui.lua` |
+| `<leader>lr` (normal) | restart lsp | `core/keymap.lua` |
+| `<leader>r` (normal) | LspUI: Rename in Project | `plugins/lspui.lua` |
+| `<leader>c` (normal) | LspUI: Code Action | `plugins/lspui.lua` |
+| `<leader>jh` (normal) | LspUI: Jump History | `plugins/lspui.lua` |
+| `<leader>e` (normal) | toggle nvim-tree | `plugins/nvim-tree.lua` |
+| `<leader>R` (normal) | replace in workspace | `plugins/grug-far.lua` |
+| `w` (normal/operator/visual) | spider motion w | `plugins/spider.lua` |
+| `e` (normal/operator/visual) | spider motion e | `plugins/spider.lua` |
+| `b` (normal/operator/visual) | spider motion b | `plugins/spider.lua` |
+| `s` (normal/visual/operator) | Flash | `plugins/flash.lua` |
+| `S` (normal/visual/operator) | Flash Treesitter | `plugins/flash.lua` |
+| `r` (operator) | Remote Flash | `plugins/flash.lua` |
+| `R` (operator/visual) | Treesitter Search | `plugins/flash.lua` |
+| `<C-s>` (command) | Toggle Flash Search | `plugins/flash.lua` |
+| `ms` (normal) | swap next parameter inner | `plugins/treesitter-textobjects.lua` |
+| `mS` (normal) | swap previous parameter outer | `plugins/treesitter-textobjects.lua` |
+| `]f` (normal/visual/operator) | goto next function start | `plugins/treesitter-textobjects.lua` |
+| `]c` (normal/visual/operator) | goto next class start | `plugins/treesitter-textobjects.lua` |
+| `]t` (normal/visual/operator) | goto next class end | `plugins/treesitter-textobjects.lua` |
+| `]m` (normal/visual/operator) | goto next function end | `plugins/treesitter-textobjects.lua` |
+| `[f` (normal/visual/operator) | goto previous function start | `plugins/treesitter-textobjects.lua` |
+| `[c` (normal/visual/operator) | goto previous class start | `plugins/treesitter-textobjects.lua` |
+| `[t` (normal/visual/operator) | goto previous class end | `plugins/treesitter-textobjects.lua` |
+| `[m` (normal/visual/operator) | goto previous function end | `plugins/treesitter-textobjects.lua` |
+| `]d` (normal) | Next todo comment | `plugins/todo.lua` |
+| `[d` (normal) | Previous todo comment | `plugins/todo.lua` |
+| `<leader>gb` (normal/visual) | Open git blame link | `plugins/gitlinker.lua` |
+| `<leader>gg` (normal/visual) | Open git link | `plugins/gitlinker.lua` |
+| `<leader>gc` (normal) | search git commits for current buffer | `plugins/fzf.lua` |
+| `gcc` (normal) | Line-comment toggle | `plugins/comment.lua` |
+| `gbc` (normal) | Block-comment toggle | `plugins/comment.lua` |
+| `gc` (normal/visual) | Line-comment operator | `plugins/comment.lua` |
+| `gb` (normal/visual) | Block-comment operator | `plugins/comment.lua` |
+| `gcO` (normal) | Add comment on line above | `plugins/comment.lua` |
+| `gco` (normal) | Add comment on line below | `plugins/comment.lua` |
+| `gcA` (normal) | Add comment at end of line | `plugins/comment.lua` |
+| `<A-j>` (normal/visual) | Move line/block down | `plugins/move.lua` |
+| `<A-k>` (normal/visual) | Move line/block up | `plugins/move.lua` |
+| `<A-h>` (normal/visual) | Move word/horizontal block left | `plugins/move.lua` |
+| `<A-l>` (normal/visual) | Move word/horizontal block right | `plugins/move.lua` |
+| `<leader>ll` (normal/visual) | CopilotChat - explain code | `plugins/copilot_chat.lua` |
+| `<leader>lt` (normal/visual) | CopilotChat - toggle chat | `plugins/copilot_chat.lua` |
 
 ## tree-sitter textobjects
 
-| keys | desc |
-|--------|----------|
-| `af` (visual/operator) | select function outer |
-| `if` (visual/operator) | select function inner |
-| `ac` (visual/operator) | select class outer |
-| `ic` (visual/operator) | select class inner |
-| `aa` (visual/operator) | select parameter outer |
-| `ia` (visual/operator) | select parameter inner |
-| `as` (visual/operator) | select local scope |
-| `ii` (operator) | subword(inner) |
-| `as` (operator) | subword(outter) |
+| keys | desc | lua file |
+|--------|----------|----------|
+| `af` (visual/operator) | select function outer | `plugins/treesitter-textobjects.lua` |
+| `if` (visual/operator) | select function inner | `plugins/treesitter-textobjects.lua` |
+| `ac` (visual/operator) | select class outer | `plugins/treesitter-textobjects.lua` |
+| `ic` (visual/operator) | select class inner | `plugins/treesitter-textobjects.lua` |
+| `aa` (visual/operator) | select parameter outer | `plugins/treesitter-textobjects.lua` |
+| `ia` (visual/operator) | select parameter inner | `plugins/treesitter-textobjects.lua` |
+| `as` (visual/operator) | select local scope | `plugins/treesitter-textobjects.lua` |
+| `ii` (operator) | select subword inner | `plugins/textobjs.lua` |
+| `as` (operator) | select subword outter | `plugins/textobjs.lua` |
 
 ## gallery
 
