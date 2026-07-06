@@ -33,11 +33,13 @@ export AI_MODEL="LongCat-Flash-Lite"
 ## Install
 
 ```bash
-git clone --filter=blob:none --sparse https://github.com/gvcgo/neovim_conf.git ~/.config/nvim
+git clone --filter=blob:none --sparse https://github.com/gvcgo/neovim_conf.git ~/.config/neovim_conf
 
-cd ~/.config/nvim
+cd ~/.config/neovim_conf
 
-git sparse-checkout set init.lua lazy-lock.json lua
+git sparse-checkout set nv_conf
+
+ln -sfn ~/.config/neovim_conf/nv_conf ~/.config/nvim
 ```
 
 ## Tree-sitter plugins
