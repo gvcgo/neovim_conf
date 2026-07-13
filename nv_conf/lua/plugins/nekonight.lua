@@ -3,6 +3,7 @@ return {
 	lazy = false,
 	priority = 1000,
 	opts = {},
+	enabled = false,
 	config = function()
 		local nekonight = require("nekonight")
 
