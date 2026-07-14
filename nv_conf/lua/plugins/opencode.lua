@@ -50,10 +50,10 @@ return {
 			require("opencode").select()
 		end, { desc = "Select OpenCode…" })
 
-		vim.keymap.set({ "n", "x" }, "<leader>l", function()
+		vim.keymap.set({ "n", "x" }, "<leader>h", function()
 			return require("opencode").operator("@this ")
 		end, { desc = "Append range to OpenCode", expr = true })
-		vim.keymap.set("n", "<leader>h", function()
+		vim.keymap.set("n", "<leader>l", function()
 			return require("opencode").operator("@this ") .. "_"
 		end, { desc = "Append line to OpenCode", expr = true })
 

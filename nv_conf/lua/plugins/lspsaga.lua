@@ -1,7 +1,6 @@
 return {
 	"nvimdev/lspsaga.nvim",
 	event = "BufReadPre",
-	enabled = false,
 	config = function()
 		require("lspsaga").setup({
 			symbol_in_winbar = {
