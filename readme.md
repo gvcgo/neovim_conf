@@ -92,8 +92,9 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>S` (normal) | Search LSP dynamic workspace symbols | `plugins/fzf.lua` |
 | `<leader>s` (normal) | Search LSP document symbols | `plugins/fzf.lua` |
 | `<leader>/` (normal) | Search string (live grep) | `plugins/fzf.lua` |
-| `<leader>/` (visual) | Toggle block comment | `core/keymap.lua` |
-| `<leader>lr` (normal) | restart lsp | `core/keymap.lua` |
+| `gc` (visual) | Toggle block comment | `default` |
+| `gcc` (normal) | Toggle line comment | `default` |
+| `<leader>L` (normal) | restart lsp | `core/keymap.lua` |
 | `K` (normal) | Lspsaga hover documentation | `plugins/lspsaga.lua` |
 | `gr` (normal) | Lspsaga LSP finder | `plugins/lspsaga.lua` |
 | `gi` (normal) | Lspsaga implementation finder | `plugins/lspsaga.lua` |
