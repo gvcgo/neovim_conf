@@ -93,6 +93,15 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>/` (normal) | Search string (live grep) | `plugins/fzf.lua` |
 | `<leader>/` (visual) | Toggle block comment | `core/keymap.lua` |
 | `<leader>lr` (normal) | restart lsp | `core/keymap.lua` |
+| `K` (normal) | Lspsaga hover documentation | `plugins/lspsaga.lua` |
+| `gr` (normal) | Lspsaga LSP finder | `plugins/lspsaga.lua` |
+| `gi` (normal) | Lspsaga implementation finder | `plugins/lspsaga.lua` |
+| `gs` (normal) | Lspsaga peek definition | `plugins/lspsaga.lua` |
+| `gd` (normal) | Lspsaga goto definition | `plugins/lspsaga.lua` |
+| `<leader>r` (normal) | Lspsaga rename in project | `plugins/lspsaga.lua` |
+| `<leader>c` (normal/visual) | Lspsaga code action | `plugins/lspsaga.lua` |
+| `<leader>o` (normal) | Lspsaga toggle outline | `plugins/lspsaga.lua` |
+| `gt` (normal/terminal) | Lspsaga toggle terminal | `plugins/lspsaga.lua` |
 | `<leader>e` (normal) | toggle nvim-tree | `plugins/nvim-tree.lua` |
 | `<leader>R` (normal) | replace in workspace | `plugins/grug-far.lua` |
 | `w` (normal/operator/visual) | spider motion w | `plugins/spider.lua` |
@@ -164,6 +173,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [gitlinker.nvim](https://github.com/linrongbin16/gitlinker.nvim) - Generate shareable links to code on GitHub, GitLab, etc.
 - [conform.nvim](https://github.com/stevearc/conform.nvim) - Formatting framework
 - [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) - LSP configuration with Mason
+- [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim) - Enhanced LSP interface and workflows
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Treesitter integration
 - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - Treesitter text objects
 - [todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - Highlight and search TODO comments
