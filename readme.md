@@ -39,6 +39,8 @@ cd ~/.config/neovim_conf
 
 git sparse-checkout set nv_conf
 
+mv ~/.config/nvim ~/.config/nvim.bak.$(date +%Y%m%d%H%M%S) 2>/dev/null
+
 ln -sfn ~/.config/neovim_conf/nv_conf ~/.config/nvim
 ```
 
