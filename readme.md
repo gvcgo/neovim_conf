@@ -139,7 +139,8 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 ## gallery
 
 ![neovim](https://github.com/moqsien/neovim_conf/blob/main/imgs/neovim.png)
-![telescope](https://github.com/moqsien/neovim_conf/blob/main/imgs/neovim_telescope.png)
+![fzf](https://github.com/moqsien/neovim_conf/blob/main/imgs/neovim_fzf.png)
+![outline](https://github.com/moqsien/neovim_conf/blob/main/imgs/neovim_outline.png)
 
 
 ## references
