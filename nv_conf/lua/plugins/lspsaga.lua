@@ -10,6 +10,9 @@ return {
 			lightbulb = {
 				enable = false,
 			},
+			rename = {
+				auto_save = true,
+			},
 		})
 	end,
 	dependencies = {
