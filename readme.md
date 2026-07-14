@@ -101,8 +101,6 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `b` (normal/operator/visual) | spider motion b | `plugins/spider.lua` |
 | `s` (normal/visual/operator) | Flash | `plugins/flash.lua` |
 | `S` (normal/visual/operator) | Flash Treesitter | `plugins/flash.lua` |
-| `r` (operator) | Remote Flash | `plugins/flash.lua` |
-| `R` (operator/visual) | Treesitter Search | `plugins/flash.lua` |
 | `<C-s>` (command) | Toggle Flash Search | `plugins/flash.lua` |
 | `]f` (normal/visual/operator) | goto next function start | `plugins/treesitter-textobjects.lua` |
 | `]c` (normal/visual/operator) | goto next class start | `plugins/treesitter-textobjects.lua` |
@@ -135,6 +133,8 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `as` (visual/operator) | select local scope | `plugins/treesitter-textobjects.lua` |
 | `ii` (visual/operator) | select subword inner | `plugins/textobjs.lua` |
 | `ai` (visual/operator) | select subword outer | `plugins/textobjs.lua` |
+| `r` (operator) | Remote Flash | `plugins/flash.lua` |
+| `R` (operator/visual) | Treesitter Search | `plugins/flash.lua` |
 
 ## gallery
 
