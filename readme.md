@@ -18,18 +18,6 @@
 - [superpowers](https://github.com/obra/superpowers/blob/main/docs/README.opencode.md)
 - [superpowers-zh](https://github.com/jnMetaCode/superpowers-zh)
 
-## Envs
-
-```bash
-# inline completion conf example. Add envs blow to .zshrc or .bashrc
-# export AI_END_POINT="https://api.longcat.chat/openai/v1/chat/completions"
-# export AI_API_KEY="xxx"
-# export AI_MODEL="LongCat-Flash-Lite"
-# export AI_MODEL="LongCat-Flash-Chat"
-# export AI_MODEL="LongCat-Flash-Thinking"
-# export AI_MODEL="LongCat-Flash-Thinking-2601"
-```
-
 ## Install
 
 ```bash
