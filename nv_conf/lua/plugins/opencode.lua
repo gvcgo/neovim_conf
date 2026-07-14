@@ -50,10 +50,10 @@ return {
 			require("opencode").select()
 		end, { desc = "Select OpenCode…" })
 
-		vim.keymap.set({ "n", "x" }, "go", function()
+		vim.keymap.set({ "n", "x" }, "<leader>l", function()
 			return require("opencode").operator("@this ")
 		end, { desc = "Append range to OpenCode", expr = true })
-		vim.keymap.set("n", "goo", function()
+		vim.keymap.set("n", "<leader>h", function()
 			return require("opencode").operator("@this ") .. "_"
 		end, { desc = "Append line to OpenCode", expr = true })
 
@@ -63,5 +63,27 @@ return {
 		vim.keymap.set("n", "<S-C-d>", function()
 			require("opencode").command("session.half.page.down")
 		end, { desc = "Scroll OpenCode down" })
+
+		-- 在代码 buffer 和 OpenCode 终端之间切换焦点
+		vim.keymap.set({ "n", "t" }, "<A-o>", function()
+			-- 获取当前已打开的 OpenCode 终端实例（如果未创建则不操作）
+			local win = require("snacks.terminal").get(opencode_cmd, { create = false })
+
+			if win and win.win and vim.api.nvim_win_is_valid(win.win) then
+				if vim.api.nvim_get_current_win() == win.win then
+					-- 1. 如果当前光标在 OpenCode 窗口内，切回上一个窗口（代码 buffer）
+					if vim.fn.mode() == "t" then
+						-- 退出终端插入模式，确保可以正常执行窗口跳转
+						vim.cmd("stopinsert")
+					end
+					vim.cmd("wincmd p")
+				else
+					-- 2. 如果当前光标在代码 buffer 内，跳转到 OpenCode 窗口
+					vim.api.nvim_set_current_win(win.win)
+					-- 自动进入终端插入模式，方便你直接开始打字交流
+					vim.cmd("startinsert")
+				end
+			end
+		end, { desc = "Focus OpenCode Terminal" })
 	end,
 }

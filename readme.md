@@ -79,8 +79,9 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>a` (normal/visual) | Ask opencode… | `plugins/opencode.lua` |
 | `<leader>b` (normal/visual) | Select opencode… | `plugins/opencode.lua` |
 | `<leader>.` (normal/terminal) | Toggle opencode | `plugins/opencode.lua` |
-| `go` (normal/visual) | Append range to opencode | `plugins/opencode.lua` |
-| `goo` (normal) | Append line to opencode | `plugins/opencode.lua` |
+| `<A-o>` (normal/terminal) | Focus opencode terminal or previous window | `plugins/opencode.lua` |
+| `<leader>l` (normal/visual) | Append range to opencode | `plugins/opencode.lua` |
+| `<leader>h` (normal) | Append line to opencode | `plugins/opencode.lua` |
 | `<S-C-u>` (normal) | Scroll opencode up | `plugins/opencode.lua` |
 | `<S-C-d>` (normal) | Scroll opencode down | `plugins/opencode.lua` |
 | `<leader>t` (normal) | Search todo comments | `plugins/todo.lua` |
@@ -101,7 +102,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>r` (normal) | Lspsaga rename in project | `plugins/lspsaga.lua` |
 | `<leader>c` (normal/visual) | Lspsaga code action | `plugins/lspsaga.lua` |
 | `<leader>o` (normal) | Lspsaga toggle outline | `plugins/lspsaga.lua` |
-| `gt` (normal/terminal) | Lspsaga toggle terminal | `plugins/lspsaga.lua` |
+| `<leader>v` (normal/terminal) | Lspsaga toggle terminal | `plugins/lspsaga.lua` |
 | `<leader>e` (normal) | toggle nvim-tree | `plugins/nvim-tree.lua` |
 | `<leader>R` (normal) | replace in workspace | `plugins/grug-far.lua` |
 | `w` (normal/operator/visual) | spider motion w | `plugins/spider.lua` |
