@@ -1,18 +1,18 @@
 ## Requirements
 
-- [Neovim](https://github.com/neovim/neovim)
+- [Neovim 0.12.4+](https://github.com/neovim/neovim)
 - Git
 - [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fzf](https://github.com/junegunn/fzf)
-- curl
 - [fd](https://github.com/sharkdp/fd) 
+- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
+- [opencode](https://github.com/anomalyco/opencode)
+- curl
 - unzip
 - gzip
 - tar
-- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
 - make
-- [opencode](https://github.com/anomalyco/opencode)
 
 ## Recommanded
 
@@ -21,14 +21,13 @@
 - [superpowers](https://github.com/obra/superpowers/blob/main/docs/README.opencode.md)
 - [superpowers-zh](https://github.com/jnMetaCode/superpowers-zh)
 
-## Install
+## Install(for Linux/Macos/WSL2)
 
 ```bash
-# for Linux/Macos/WSL2
 curl -fsSL https://raw.githubusercontent.com/gvcgo/neovim_conf/refs/heads/main/install.sh | bash
 ```
 
-## Tree-sitter plugins
+## Post-Install(tree-sitter plugins needed by this project)
 
 ```bash
 :TSInstall lua rust javascript go markdown bash zsh cpp json typescript yaml proto
@@ -37,6 +36,7 @@ curl -fsSL https://raw.githubusercontent.com/gvcgo/neovim_conf/refs/heads/main/i
 ## Terminal Proxy
 
 ```bash
+# fix opencode connection for opencode.nvim
 alias OnProxy="export http_proxy=http://127.0.0.1:2023;export https_proxy=http://127.0.0.1:2023;export no_proxy=127.0.0.1,localhost,::1"
 alias OffProxy="unset http_proxy;unset https_proxy"
 ```
