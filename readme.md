@@ -65,7 +65,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>a` (normal/visual) | Ask opencode… | `plugins/opencode.lua` |
 | `<leader>b` (normal/visual) | Select opencode… | `plugins/opencode.lua` |
 | `<leader>.` (normal/terminal) | Toggle opencode | `plugins/opencode.lua` |
-| `<A-o>` (normal/terminal) | Focus opencode terminal or previous window | `plugins/opencode.lua` |
+| `<S-C-o>` (normal/terminal) | Focus opencode terminal or previous window | `plugins/opencode.lua` |
 | `<leader>h` (normal/visual) | Append range to opencode | `plugins/opencode.lua` |
 | `<leader>l` (normal) | Append line to opencode | `plugins/opencode.lua` |
 | `<S-C-u>` (normal) | Scroll opencode up | `plugins/opencode.lua` |

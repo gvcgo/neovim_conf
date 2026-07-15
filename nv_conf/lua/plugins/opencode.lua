@@ -65,7 +65,7 @@ return {
 		end, { desc = "Scroll OpenCode down" })
 
 		-- 在代码 buffer 和 OpenCode 终端之间切换焦点
-		vim.keymap.set({ "n", "t" }, "<A-o>", function()
+		vim.keymap.set({ "n", "t" }, "<S-C-o>", function()
 			-- 获取当前已打开的 OpenCode 终端实例（如果未创建则不操作）
 			local win = require("snacks.terminal").get(opencode_cmd, { create = false })
 
