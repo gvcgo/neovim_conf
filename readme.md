@@ -24,15 +24,8 @@
 ## Install
 
 ```bash
-git clone --filter=blob:none --sparse https://github.com/gvcgo/neovim_conf.git ~/.config/neovim_conf
-
-cd ~/.config/neovim_conf
-
-git sparse-checkout set nv_conf
-
-mv ~/.config/nvim ~/.config/nvim.bak.$(date +%Y%m%d%H%M%S) 2>/dev/null
-
-ln -sfn ~/.config/neovim_conf/nv_conf ~/.config/nvim
+# for Linux/Macos/WSL2
+curl -fsSL https://raw.githubusercontent.com/gvcgo/neovim_conf/refs/heads/main/install.sh | bash
 ```
 
 ## Tree-sitter plugins

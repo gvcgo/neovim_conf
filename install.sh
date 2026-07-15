@@ -21,7 +21,21 @@ check_command tree-sitter "tree-sitter-cli (tree-sitter)"
 check_command make "make"
 check_command opencode "opencode"
 
-if ! command -v fc-list >/dev/null 2>&1; then
+if [ "$(uname -s)" = "Darwin" ]; then
+    nerd_font_found=false
+    for font_dir in "$HOME/Library/Fonts" /Library/Fonts /System/Library/Fonts; do
+        for font_file in "$font_dir"/*NerdFont* "$font_dir"/*"Nerd Font"*; do
+            if [ -e "$font_file" ]; then
+                nerd_font_found=true
+                break 2
+            fi
+        done
+    done
+
+    if [ "$nerd_font_found" = false ]; then
+        missing_dependencies="${missing_dependencies}\n- Nerd Font"
+    fi
+elif ! command -v fc-list >/dev/null 2>&1; then
     missing_dependencies="${missing_dependencies}\n- fontconfig (fc-list)\n- Nerd Font (cannot verify without fc-list)"
 elif ! fc-list | grep -qi "Nerd Font"; then
     missing_dependencies="${missing_dependencies}\n- Nerd Font"
