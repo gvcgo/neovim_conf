@@ -25,7 +25,7 @@ return {
 					end,
 					auto_insert = function()
 						local ft = vim.bo.filetype
-						return ft ~= "markdown" and ft ~= "sagarename"
+						return ft ~= "sagarename"
 					end,
 				},
 			},
