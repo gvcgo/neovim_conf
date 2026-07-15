@@ -13,6 +13,9 @@
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
 - make
 - [opencode](https://github.com/anomalyco/opencode)
+
+## Recommanded
+
 - [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode)
 - [oh-my-opencode-slim](https://github.com/alvinunreal/oh-my-opencode-slim)
 - [superpowers](https://github.com/obra/superpowers/blob/main/docs/README.opencode.md)
