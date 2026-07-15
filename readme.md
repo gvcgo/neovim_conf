@@ -1,13 +1,13 @@
 ## Requirements
 
-- [Neovim 0.12.4+](https://github.com/neovim/neovim)
-- Git
-- [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+- [neovim 0.12.4+](https://github.com/neovim/neovim)
+- [nerd font](https://github.com/ryanoasis/nerd-fonts)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fzf](https://github.com/junegunn/fzf)
 - [fd](https://github.com/sharkdp/fd) 
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
 - [opencode](https://github.com/anomalyco/opencode)
+- git
 - curl
 - unzip
 - gzip
