@@ -21,7 +21,7 @@
 - [superpowers](https://github.com/obra/superpowers/blob/main/docs/README.opencode.md)
 - [superpowers-zh](https://github.com/jnMetaCode/superpowers-zh)
 
-## Install (Arch Linux / Manjaro / Ubuntu / macOS; WSL2 with Ubuntu)
+## Install 
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/gvcgo/neovim_conf/refs/heads/main/install.sh | bash
