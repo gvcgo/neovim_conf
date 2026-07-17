@@ -70,8 +70,9 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>l` (normal) | Append line to opencode | `plugins/opencode.lua` |
 | `<S-C-u>` (normal) | Scroll opencode up | `plugins/opencode.lua` |
 | `<S-C-d>` (normal) | Scroll opencode down | `plugins/opencode.lua` |
-| `<leader>t` (normal) | Search todo comments | `plugins/todo.lua` |
 | `<leader>f` (normal) | find files | `plugins/fzf.lua` |
+| `<leader>t` (normal) | Search todo comments in buffer | `plugins/fzf.lua` |
+| `<leader>T` (normal) | Search todo comments in project | `plugins/fzf.lua` |
 | `<leader>C` (normal) | find nvim config files | `plugins/fzf.lua` |
 | `<leader>d` (normal) | Search Diagnostics | `plugins/fzf.lua` |
 | `<leader>k` (normal) | Search keymaps | `plugins/fzf.lua` |
@@ -106,8 +107,6 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `[c` (normal/visual/operator) | goto previous class start | `plugins/treesitter-textobjects.lua` |
 | `[t` (normal/visual/operator) | goto previous class end | `plugins/treesitter-textobjects.lua` |
 | `[m` (normal/visual/operator) | goto previous function end | `plugins/treesitter-textobjects.lua` |
-| `]d` (normal) | Next todo comment | `plugins/todo.lua` |
-| `[d` (normal) | Previous todo comment | `plugins/todo.lua` |
 | `<leader>gb` (normal/visual) | Open git blame link | `plugins/gitlinker.lua` |
 | `<leader>gg` (normal/visual) | Open git link | `plugins/gitlinker.lua` |
 | `<leader>gc` (normal) | search git commits for current buffer | `plugins/fzf.lua` |
@@ -165,7 +164,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim) - Enhanced LSP interface and workflows
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Treesitter integration
 - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - Treesitter text objects
-- [todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - Highlight and search TODO comments
+- [todo-comments.nvim](https://github.com/alexmozaidze/tree-comment.nvim) - Highlight TODO comments
 - [move.nvim](https://github.com/hinell/move.nvim) - Move lines and blocks with Alt+direction keys
 - [opencode.nvim](https://github.com/nickjvandyke/opencode.nvim) - AI-powered coding assistant
 

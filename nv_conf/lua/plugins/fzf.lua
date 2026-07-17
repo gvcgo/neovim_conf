@@ -61,16 +61,18 @@ return {
 			fzf.git_bcommits()
 		end, { desc = "Search git commit for current buffer" })
 
+		local todo_pattern = [[(#|//|--|/\*|\*)[^\r\n]*\b(TODO|FIXME|HACK|BUG|NOTE|PERF)\b]]
 		vim.keymap.set("n", "<leader>T", function()
-			require("fzf-lua").grep({
-				search = "\\b(TODO|FIXME|HACK|BUG|NOTE|PERF)\\b",
+			fzf.grep({
+				search = todo_pattern,
 				no_esc = true,
 				prompt = "Todos> ",
 			})
 		end, { desc = "Search TODO comments" })
+
 		vim.keymap.set("n", "<leader>t", function()
-			require("fzf-lua").grep_curbuf({
-				search = "\\b(TODO|FIXME|HACK|BUG|NOTE|PERF)\\b",
+			fzf.grep_curbuf({
+				search = todo_pattern,
 				no_esc = true,
 				prompt = "Buffer Todos> ",
 			})
