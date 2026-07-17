@@ -4,6 +4,8 @@ return {
 	event = "VeryLazy",
 	config = function()
 		local fzf = require("fzf-lua")
+		local rg_opts =
+			"--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --hidden --no-ignore"
 
 		fzf.setup({
 			fzf_opts = {
@@ -14,7 +16,7 @@ return {
 				fd_opts = "--color=never --type f --hidden --no-ignore --follow --exclude .git",
 			},
 			grep = {
-				rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --hidden --no-ignore",
+				rg_opts = rg_opts,
 			},
 			winopts = {
 				height = 0.85,
@@ -65,6 +67,7 @@ return {
 		vim.keymap.set("n", "<leader>T", function()
 			fzf.grep_project({
 				search = todo_pattern,
+				rg_opts = rg_opts .. " --glob '!**/.venv/**' --glob '!**/.git/**' --glob '!**/.cache/**'",
 				no_esc = true,
 				prompt = "Todos> ",
 			})
