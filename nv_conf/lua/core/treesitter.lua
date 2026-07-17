@@ -12,6 +12,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		"typescript",
 		"yaml",
 		"proto",
+		"comment",
 	},
 	callback = function(args)
 		-- vim.treesitter.start()
