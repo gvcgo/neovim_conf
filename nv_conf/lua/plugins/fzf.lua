@@ -63,7 +63,7 @@ return {
 
 		local todo_pattern = [[(#|//|--|/\*|\*)[^\r\n]*\b(TODO|FIXME|HACK|BUG|NOTE|PERF)\b]]
 		vim.keymap.set("n", "<leader>T", function()
-			fzf.grep({
+			fzf.grep_project({
 				search = todo_pattern,
 				no_esc = true,
 				prompt = "Todos> ",
