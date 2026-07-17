@@ -67,7 +67,7 @@ return {
 		},
 	},
 	config = function()
-		vim.keymap.set("n", "<leader>t", "<cmd>TodoTelescope keywords=TODO<CR>", { desc = "Open todos in telescope" })
+		vim.keymap.set("n", "<leader>t", "<cmd>TodoFzfLua keywords=TODO<CR>", { desc = "Open todos in fzf" })
 
 		local todo = require("todo-comments")
 		vim.keymap.set("n", "]d", function()
