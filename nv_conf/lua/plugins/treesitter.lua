@@ -1,22 +1,24 @@
+local parsers = {
+	"lua",
+	"rust",
+	"javascript",
+	"go",
+	"comment",
+	"markdown",
+	"bash",
+	"zsh",
+	"cpp",
+	"json",
+	"typescript",
+	"yaml",
+	"proto",
+}
+
 return {
 	"nvim-treesitter/nvim-treesitter",
 	lazy = false,
-	ensure_installed = {
-		"lua",
-		"rust",
-		"javascript",
-		"go",
-		"markdown",
-		"bash",
-		"zsh",
-		"cpp",
-		"json",
-		"typescript",
-		"yaml",
-		"proto",
-	},
 	build = ":TSUpdate",
-	opts = {
-		highlight = { enable = true },
-	},
+	config = function()
+		require("nvim-treesitter").install(parsers)
+	end,
 }
