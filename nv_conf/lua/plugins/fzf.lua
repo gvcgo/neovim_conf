@@ -60,5 +60,20 @@ return {
 		vim.keymap.set("n", "<leader>gc", function()
 			fzf.git_bcommits()
 		end, { desc = "Search git commit for current buffer" })
+
+		vim.keymap.set("n", "<leader>T", function()
+			require("fzf-lua").grep({
+				search = "\\b(TODO|FIXME|HACK|BUG|NOTE|PERF)\\b",
+				no_esc = true,
+				prompt = "Todos> ",
+			})
+		end, { desc = "Search TODO comments" })
+		vim.keymap.set("n", "<leader>t", function()
+			require("fzf-lua").grep_curbuf({
+				search = "\\b(TODO|FIXME|HACK|BUG|NOTE|PERF)\\b",
+				no_esc = true,
+				prompt = "Buffer Todos> ",
+			})
+		end, { desc = "Search TODOs in current buffer" })
 	end,
 }
