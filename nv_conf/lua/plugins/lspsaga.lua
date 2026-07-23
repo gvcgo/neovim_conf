@@ -11,6 +11,9 @@ return {
 			},
 			rename = {
 				auto_save = true,
+				keys = {
+					quit = "q",
+				},
 			},
 		})
 	end,
