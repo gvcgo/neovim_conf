@@ -36,7 +36,7 @@ curl -fsSL https://raw.githubusercontent.com/gvcgo/neovim_conf/refs/heads/main/i
 ## Terminal Proxy
 
 ```bash
-# fix opencode connection for opencode.nvim
+# fix opencode connection for opencode.nvim when a proxy has been set for terminal
 alias OnProxy="export http_proxy=http://127.0.0.1:2023;export https_proxy=http://127.0.0.1:2023;export no_proxy=127.0.0.1,localhost,::1"
 alias OffProxy="unset http_proxy;unset https_proxy"
 ```
