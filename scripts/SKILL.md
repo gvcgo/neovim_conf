@@ -22,11 +22,15 @@ description: 当前用户的全局工作流与代码规范定制规则。适用�
 
 ## 3. 特定项目规范：`inlight-board/backend/go`
 
-当你在处理 `inlight-board/backend/go` 项目相关的任务时，必须严格遵守以下专属架构与代码风格要求：
+当你在处理 `inlight-board/backend/go` 项目相关的任务时，必须严格遵守以下专属架构与代码风格及提交流程要求：
 
 - **风格对齐**：必须注意 Go 代码的规范和风格，尽量参考同一目录下或项目内已有的代码实现。
 - **Helper 函数布局**：所有的 helper（辅助/工具）函数应该尽量放置在每个代码文件的**末尾**。
+- **Handler 结构体布局**：如果需要给 handler 函数单独定义 struct（请求/响应结构体），**必须将该 struct 放置在相应 handler 函数的紧挨着的上方**。
 - **Swagger 文档规范**：
   - 文档目录设在 `inlight-board/backend/go/doc/` 之下。
   - **总入口**：`inlight-board/backend/go/doc/api.yaml` 是文档的入口文件。
   - **模块映射**：`doc/` 下其余的 `*.yaml` 配置文件命名，必须与 `inlight-board/backend/go/src/vibe/api/` 下的文件夹**一一对应**。在增加或修改 API 接口时，请确保在正确的 YAML 文件中同步维护文档。
+- **代码生成同步**：在用 git 提交代码之前，如果有新增的数据库 Model，必须运行 `inlight-board/backend/go/sync-generated` 脚本生成相关的命令行工具代码。
+- **代码格式化**：在用 git 提交代码之前，必须使用 `inlight-board/backend/go/format` 脚本对代码进行统一的格式化。
+- **PR 与分支管理**：当用户要求推送代码至远程仓库，且对应的远程分支不存在时，必须使用 `gh` 命令行工具创建远程分支，并同时创建 Pull Request (PR)。创建 PR 时，必须使用**英文**编写 PR 的标题和描述。
