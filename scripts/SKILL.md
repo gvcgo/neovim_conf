@@ -36,3 +36,4 @@ description: 当前用户的全局工作流与代码规范定制规则。适用�
 - **代码格式化**：在用 git 提交代码之前，必须使用 `inlight-board/backend/go/format` 脚本对代码进行统一的格式化。
 - **PR 与分支管理**：当用户要求推送代码至远程仓库，且对应的远程分支不存在时，必须使用 `gh` 命令行工具创建远程分支，并同时创建 Pull Request (PR)。创建 PR 时，必须使用**英文**编写 PR 的标题和描述。
 - **Code Review 处理**：如果要求根据 review 信息修改代码时，必须使用 `gh` 命令从远程获取 review 信息后，再据此进行代码修改。
+- **读取 PRD 文档**：在 `inlight-board/backend/go` 项目中，如果需要读取 notion 中的 PRD 文档，可以使用 `ntn` 命令。
