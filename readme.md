@@ -91,6 +91,8 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>c` (normal/visual) | Lspsaga code action | `plugins/lspsaga.lua` |
 | `<leader>o` (normal) | Lspsaga toggle outline | `plugins/lspsaga.lua` |
 | `<leader>v` (normal/terminal) | Lspsaga toggle terminal | `plugins/lspsaga.lua` |
+| `<C-d>` (Lspsaga preview) | Scroll preview down | `plugins/lspsaga.lua` |
+| `<C-u>` (Lspsaga preview) | Scroll preview up | `plugins/lspsaga.lua` |
 | `<leader>e` (normal) | toggle nvim-tree | `plugins/nvim-tree.lua` |
 | `<leader>R` (normal) | replace in workspace | `plugins/grug-far.lua` |
 | `w` (normal/operator/visual) | spider motion w | `plugins/spider.lua` |

@@ -15,6 +15,10 @@ return {
 					quit = "q",
 				},
 			},
+			scroll_preview = {
+				scroll_down = "<C-d>",
+				scroll_up = "<C-u>",
+			},
 		})
 	end,
 	dependencies = {
