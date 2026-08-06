@@ -68,8 +68,8 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<S-C-o>` (normal/terminal) | Focus opencode terminal or previous window | `plugins/opencode.lua` |
 | `<leader>h` (normal/visual) | Append range to opencode | `plugins/opencode.lua` |
 | `<leader>l` (normal) | Append line to opencode | `plugins/opencode.lua` |
-| `<S-C-u>` (normal) | Scroll opencode up | `plugins/opencode.lua` |
-| `<S-C-d>` (normal) | Scroll opencode down | `plugins/opencode.lua` |
+| `<A-u>` (normal/terminal) | Scroll opencode up | `plugins/opencode.lua` |
+| `<A-d>` (normal/terminal) | Scroll opencode down | `plugins/opencode.lua` |
 | `<leader>f` (normal) | find files | `plugins/fzf.lua` |
 | `<leader>t` (normal) | Search todo comments in buffer | `plugins/fzf.lua` |
 | `<leader>T` (normal) | Search todo comments in project | `plugins/fzf.lua` |
