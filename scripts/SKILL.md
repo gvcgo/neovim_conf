@@ -37,3 +37,4 @@ description: 当前用户的全局工作流与代码规范定制规则。适用�
 - **PR 与分支管理**：当用户要求推送代码至远程仓库，且对应的远程分支不存在时，必须使用 `gh` 命令行工具创建远程分支，并同时创建 Pull Request (PR)。创建 PR 时，必须使用**英文**编写 PR 的标题和描述。
 - **Code Review 处理**：如果要求根据 review 信息修改代码时，必须使用 `gh` 命令从远程获取 review 信息后，再据此进行代码修改。
 - **读取 PRD 文档**：在 `inlight-board/backend/go` 项目中，如果需要读取 notion 中的 PRD 文档，可以使用 `ntn` 命令。
+- **DynamoDB 数据查询**：如果在 `inlight-board/backend/go` 项目中，需要查询 DynamoDB 中的数据，可以使用 `repo-cli` 命令。`repo-cli` 中的子命令对应着 `inlight-board/backend/go` 中的各种查询方法。
