@@ -34,7 +34,9 @@ description: 当前用户的全局工作流与代码规范定制规则。适用�
   - **模块映射**：`doc/` 下其余的 `*.yaml` 配置文件命名，必须与 `inlight-board/backend/go/src/vibe/api/` 下的文件夹**一一对应**。在增加或修改 API 接口时，请确保在正确的 YAML 文件中同步维护文档。
 - **代码生成同步**：在用 git 提交代码之前，如果有新增的数据库 Model，必须运行 `inlight-board/backend/go/sync-generated` 脚本生成相关的命令行工具代码。
 - **代码格式化**：在用 git 提交代码之前，必须使用 `inlight-board/backend/go/format` 脚本对代码进行统一的格式化。
+- **分支命名规范**：在创建新分支时，必须注意分支的命名规范，务必与项目之前已有的命名传统保持一致。
 - **PR 与分支管理**：当用户要求推送代码至远程仓库，且对应的远程分支不存在时，必须使用 `gh` 命令行工具创建远程分支，并同时创建 Pull Request (PR)。创建 PR 时，必须使用**英文**编写 PR 的标题和描述。
 - **Code Review 处理**：如果要求根据 review 信息修改代码时，必须使用 `gh` 命令从远程获取 review 信息后，再据此进行代码修改。
 - **读取 PRD 文档**：在 `inlight-board/backend/go` 项目中，如果需要读取 notion 中的 PRD 文档，可以使用 `ntn` 命令。
 - **DynamoDB 数据查询**：如果在 `inlight-board/backend/go` 项目中，需要查询 DynamoDB 中的数据，可以使用 `repo-cli` 命令。`repo-cli` 中的子命令对应着 `inlight-board/backend/go` 中的各种查询方法。
+- **AWS 日志查询**：如果要求查询相应的 AWS Lambda 等服务的日志，必须使用 `saw` 命令。使用时需注意 `dev` 和 `beta` 位于不同的分区（Partition）；同时需要明确有哪些日志组（Log Group），以及它们分别对应着 `inlight-board/backend/go/vibe/src/api/` 中的哪些 APIs。
