@@ -1,6 +1,9 @@
 return {
 	{
 		"rauls-kjarners/omp.nvim",
+		dependencies = {
+			"folke/snacks.nvim",
+		},
 		event = "VeryLazy",
 		keys = {
 			-- 1. 打开/关闭 omp 终端面板
