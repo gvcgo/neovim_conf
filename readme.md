@@ -7,6 +7,7 @@
 - [fd](https://github.com/sharkdp/fd) 
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
 - [opencode](https://github.com/anomalyco/opencode)
+- [oh-my-pi](https://github.com/can1357/oh-my-pi)
 - git
 - curl
 - unzip
@@ -62,14 +63,9 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<C-a>` (normal) | select all | `core/keymap.lua` |
 | `<C-s>` (normal) | write | `core/keymap.lua` |
 | `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
-| `<leader>a` (normal/visual) | Ask opencode… | `plugins/opencode.lua` |
-| `<leader>b` (normal/visual) | Select opencode… | `plugins/opencode.lua` |
-| `<leader>.` (normal/terminal) | Toggle opencode | `plugins/opencode.lua` |
-| `<S-C-o>` (normal/terminal) | Focus opencode terminal or previous window | `plugins/opencode.lua` |
-| `<leader>h` (normal/visual) | Append range to opencode | `plugins/opencode.lua` |
-| `<leader>l` (normal) | Append line to opencode | `plugins/opencode.lua` |
-| `<A-u>` (normal/terminal) | Scroll opencode up | `plugins/opencode.lua` |
-| `<A-d>` (normal/terminal) | Scroll opencode down | `plugins/opencode.lua` |
+| `<leader>.` (normal/terminal) | Toggle Oh My Pi terminal | `plugins/omp.lua` |
+| `<C-S-o>` (normal) | Jump to OMP terminal | `plugins/omp.lua` |
+| `<C-S-o>` (terminal) | Jump to editor buffer | `plugins/omp.lua` |
 | `<leader>f` (normal) | find files | `plugins/fzf.lua` |
 | `<leader>t` (normal) | Search todo comments in buffer | `plugins/fzf.lua` |
 | `<leader>T` (normal) | Search todo comments in project | `plugins/fzf.lua` |
@@ -169,6 +165,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [todo-comments.nvim](https://github.com/alexmozaidze/tree-comment.nvim) - Highlight TODO comments
 - [move.nvim](https://github.com/hinell/move.nvim) - Move lines and blocks with Alt+direction keys
 - [opencode.nvim](https://github.com/nickjvandyke/opencode.nvim) - AI-powered coding assistant
+- [omp.nvim](https://github.com/rauls-kjarners/omp.nvim) - Oh My Pi AI assistant integration
 
 ### Plugin Dependencies
 
