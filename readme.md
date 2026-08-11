@@ -6,7 +6,7 @@
 - [fzf](https://github.com/junegunn/fzf)
 - [fd](https://github.com/sharkdp/fd) 
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
-- [opencode](https://github.com/anomalyco/opencode)
+- [~~opencode~~](https://github.com/anomalyco/opencode)
 - [oh-my-pi](https://github.com/can1357/oh-my-pi)
 - git
 - curl
@@ -17,15 +17,21 @@
 
 ## Recommanded
 
-- [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode)
-- [oh-my-opencode-slim](https://github.com/alvinunreal/oh-my-opencode-slim)
-- [superpowers](https://github.com/obra/superpowers/blob/main/docs/README.opencode.md)
-- [superpowers-zh](https://github.com/jnMetaCode/superpowers-zh)
+- [~~oh-my-opencode~~](https://github.com/code-yeongyu/oh-my-opencode)
+- [~~oh-my-opencode-slim~~](https://github.com/alvinunreal/oh-my-opencode-slim)
+- [~~superpowers~~](https://github.com/obra/superpowers/blob/main/docs/README.opencode.md)
+- [~~superpowers-zh~~](https://github.com/jnMetaCode/superpowers-zh)
 
 ## Install 
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/gvcgo/neovim_conf/refs/heads/main/install.sh | bash
+```
+
+## Pre-Install
+
+```bash
+omp install pi-nvim
 ```
 
 ## Post-Install(tree-sitter plugins needed by this project)
@@ -169,7 +175,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - Treesitter text objects
 - [todo-comments.nvim](https://github.com/alexmozaidze/tree-comment.nvim) - Highlight TODO comments
 - [move.nvim](https://github.com/hinell/move.nvim) - Move lines and blocks with Alt+direction keys
-- [opencode.nvim](https://github.com/nickjvandyke/opencode.nvim) - AI-powered coding assistant
+- [~~opencode.nvim~~](https://github.com/nickjvandyke/opencode.nvim) - AI-powered coding assistant
 - [omp.nvim](https://github.com/rauls-kjarners/omp.nvim) - Oh My Pi AI assistant integration
 - [pi-nvim](https://github.com/carderne/pi-nvim) - Bridge between pi coding agent and Neovim
 
@@ -182,7 +188,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - LSP configurations
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - UI component library
 - [nvim-notify](https://github.com/rcarriga/nvim-notify) - Notification system
-- [snacks.nvim](https://github.com/folke/snacks.nvim) - UI components for Opencode
+- [snacks.nvim](https://github.com/folke/snacks.nvim) - UI components for OhMyPi
 
 ### Other References
 
