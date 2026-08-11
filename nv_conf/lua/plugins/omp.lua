@@ -19,7 +19,7 @@ return {
 					})
 				end,
 				desc = "Toggle Oh My Pi",
-				mode = { "n", "t" },
+				mode = { "n", "v", "t" },
 			},
 
 			-- 2. 从普通 Buffer 跳转到 OMP 终端 (Normal Mode)

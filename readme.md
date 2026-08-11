@@ -64,6 +64,11 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<C-s>` (normal) | write | `core/keymap.lua` |
 | `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
 | `<leader>.` (normal/terminal) | Toggle Oh My Pi terminal | `plugins/omp.lua` |
+| `<leader>aa` (normal/visual) | Pi: Open dialog | `plugins/pi-nvim.lua` |
+| `<leader>af` (normal) | Pi: Send file | `plugins/pi-nvim.lua` |
+| `<leader>as` (visual) | Pi: Send selection | `plugins/pi-nvim.lua` |
+| `<leader>ab` (normal) | Pi: Send buffer | `plugins/pi-nvim.lua` |
+| `<leader>ao` (normal) | Pi: List sessions | `plugins/pi-nvim.lua` |
 | `<C-S-o>` (normal) | Jump to OMP terminal | `plugins/omp.lua` |
 | `<C-S-o>` (terminal) | Jump to editor buffer | `plugins/omp.lua` |
 | `<leader>f` (normal) | find files | `plugins/fzf.lua` |
@@ -166,6 +171,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [move.nvim](https://github.com/hinell/move.nvim) - Move lines and blocks with Alt+direction keys
 - [opencode.nvim](https://github.com/nickjvandyke/opencode.nvim) - AI-powered coding assistant
 - [omp.nvim](https://github.com/rauls-kjarners/omp.nvim) - Oh My Pi AI assistant integration
+- [pi-nvim](https://github.com/carderne/pi-nvim) - Bridge between pi coding agent and Neovim
 
 ### Plugin Dependencies
 
