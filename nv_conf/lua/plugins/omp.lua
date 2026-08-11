@@ -10,14 +10,16 @@ return {
 			{
 				"<leader>.",
 				function()
-					require("snacks.terminal").toggle("omp", {
+					require("snacks.terminal").toggle("omp 'You are a code assistant, writer and viewer.'", {
 						win = {
+							enter = false,
 							position = "right",
 							width = 0.4,
 						},
 					})
 				end,
 				desc = "Toggle Oh My Pi",
+				mode = { "n", "t" },
 			},
 
 			-- 2. 从普通 Buffer 跳转到 OMP 终端 (Normal Mode)
