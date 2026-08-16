@@ -54,6 +54,7 @@ end
 return {
 	"carderne/pi-nvim",
 	event = "VimEnter",
+	enabled = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"folke/snacks.nvim",

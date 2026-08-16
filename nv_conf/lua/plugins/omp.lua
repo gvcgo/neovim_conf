@@ -4,6 +4,7 @@ return {
 		dependencies = {
 			"folke/snacks.nvim",
 		},
+		enabled = false,
 		event = "VeryLazy",
 		keys = {
 			-- 1. 打开/关闭 omp 终端面板
