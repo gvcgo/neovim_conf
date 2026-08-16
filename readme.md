@@ -7,7 +7,7 @@
 - [fd](https://github.com/sharkdp/fd) 
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
 - [~~opencode~~](https://github.com/anomalyco/opencode)
-- [oh-my-pi](https://github.com/can1357/oh-my-pi)
+- [~~oh-my-pi~~](https://github.com/can1357/oh-my-pi)
 - git
 - curl
 - unzip
@@ -31,7 +31,11 @@ curl -fsSL https://raw.githubusercontent.com/gvcgo/neovim_conf/refs/heads/main/i
 ## Pre-Install
 
 ```bash
-omp install pi-nvim
+# dsh CLI (DeepSeek Harness), required by dsh.nvim
+npm i -g @deepseek-ai/dsh
+
+# TUI plugin for the `tui` profile (needed for dsh: TUI keymaps)
+npx -y @deepseek-ai/dsh plugin --profile tui add @huiliyi37/dsh-tianshu-tui
 ```
 
 ## Post-Install(tree-sitter plugins needed by this project)
@@ -69,14 +73,15 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<C-a>` (normal) | select all | `core/keymap.lua` |
 | `<C-s>` (normal) | write | `core/keymap.lua` |
 | `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
-| `<leader>.` (normal/terminal) | Toggle Oh My Pi terminal | `plugins/omp.lua` |
-| `<leader>aa` (normal/visual) | Pi: Open dialog | `plugins/pi-nvim.lua` |
-| `<leader>af` (normal) | Pi: Send file | `plugins/pi-nvim.lua` |
-| `<leader>as` (visual) | Pi: Send selection | `plugins/pi-nvim.lua` |
-| `<leader>ab` (normal) | Pi: Send buffer | `plugins/pi-nvim.lua` |
-| `<leader>ao` (normal) | Pi: List sessions | `plugins/pi-nvim.lua` |
-| `<C-S-o>` (normal) | Jump to OMP terminal | `plugins/omp.lua` |
-| `<C-S-o>` (terminal) | Jump to editor buffer | `plugins/omp.lua` |
+| `<leader>aa` (normal) | dsh: Ask (open dialog) | `plugins/dsh.lua` |
+| `<leader>af` (normal) | dsh: Review current file | `plugins/dsh.lua` |
+| `<leader>av` (visual) | dsh: Send selection | `plugins/dsh.lua` |
+| `<leader>tt` (normal) | dsh: Toggle TUI terminal | `plugins/dsh.lua` |
+| `<leader>tf` (normal) | dsh: Add file to TUI | `plugins/dsh.lua` |
+| `<leader>tv` (visual) | dsh: Add selection to TUI | `plugins/dsh.lua` |
+| `<leader>.` (terminal normal) | dsh: Close TUI window | `plugins/dsh.lua` |
+| `<C-S-o>` (normal) | Jump to dsh terminal | `plugins/dsh.lua` |
+| `<C-S-o>` (terminal) | Jump to editor buffer | `plugins/dsh.lua` |
 | `<leader>f` (normal) | find files | `plugins/fzf.lua` |
 | `<leader>t` (normal) | Search todo comments in buffer | `plugins/fzf.lua` |
 | `<leader>T` (normal) | Search todo comments in project | `plugins/fzf.lua` |
@@ -176,8 +181,9 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [todo-comments.nvim](https://github.com/alexmozaidze/tree-comment.nvim) - Highlight TODO comments
 - [move.nvim](https://github.com/hinell/move.nvim) - Move lines and blocks with Alt+direction keys
 - [~~opencode.nvim~~](https://github.com/nickjvandyke/opencode.nvim) - AI-powered coding assistant
-- [omp.nvim](https://github.com/rauls-kjarners/omp.nvim) - Oh My Pi AI assistant integration
-- [pi-nvim](https://github.com/carderne/pi-nvim) - Bridge between pi coding agent and Neovim
+- [dsh.nvim](https://github.com/AlbinZhu/dsh.nvim) - DeepSeek Harness (dsh) coding agent integration
+- [~~omp.nvim~~](https://github.com/rauls-kjarners/omp.nvim) - Oh My Pi AI assistant integration
+- [~~pi-nvim~~](https://github.com/carderne/pi-nvim) - Bridge between pi coding agent and Neovim
 
 ### Plugin Dependencies
 
