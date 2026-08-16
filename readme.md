@@ -8,6 +8,7 @@
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
 - [~~opencode~~](https://github.com/anomalyco/opencode)
 - [~~oh-my-pi~~](https://github.com/can1357/oh-my-pi)
+- [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)
 - git
 - curl
 - unzip
@@ -184,6 +185,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [dsh.nvim](https://github.com/AlbinZhu/dsh.nvim) - DeepSeek Harness (dsh) coding agent integration
 - [~~omp.nvim~~](https://github.com/rauls-kjarners/omp.nvim) - Oh My Pi AI assistant integration
 - [~~pi-nvim~~](https://github.com/carderne/pi-nvim) - Bridge between pi coding agent and Neovim
+- [dsh.nvim](https://github.com/AlbinZhu/dsh.nvim) - Neovim plugin for DeepSeek Harness
 
 ### Plugin Dependencies
 
