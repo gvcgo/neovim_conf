@@ -32,11 +32,7 @@ curl -fsSL https://raw.githubusercontent.com/gvcgo/neovim_conf/refs/heads/main/i
 ## Pre-Install
 
 ```bash
-# dsh CLI (DeepSeek Harness), required by dsh.nvim
-npm i -g @deepseek-ai/dsh
-
-# TUI plugin for the `tui` profile (needed for dsh: TUI keymaps)
-npx -y @deepseek-ai/dsh plugin --profile tui add @huiliyi37/dsh-tianshu-tui
+bun install -g @oh-my-pi/pi-coding-agent
 ```
 
 ## Post-Install(tree-sitter plugins needed by this project)
@@ -48,7 +44,7 @@ npx -y @deepseek-ai/dsh plugin --profile tui add @huiliyi37/dsh-tianshu-tui
 ## Terminal Proxy
 
 ```bash
-# fix opencode connection for opencode.nvim when a proxy has been set for terminal
+# fix opencode/omp connection for opencode.nvim when a proxy has been set for terminal
 alias OnProxy="export http_proxy=http://127.0.0.1:2023;export https_proxy=http://127.0.0.1:2023;export no_proxy=127.0.0.1,localhost,::1"
 alias OffProxy="unset http_proxy;unset https_proxy"
 ```
@@ -74,15 +70,14 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<C-a>` (normal) | select all | `core/keymap.lua` |
 | `<C-s>` (normal) | write | `core/keymap.lua` |
 | `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
-| `<leader>aa` (normal) | dsh: Ask (open dialog) | `plugins/dsh.lua` |
-| `<leader>af` (normal) | dsh: Review current file | `plugins/dsh.lua` |
-| `<leader>av` (visual) | dsh: Send selection | `plugins/dsh.lua` |
-| `<leader>tt` (normal) | dsh: Toggle TUI terminal | `plugins/dsh.lua` |
-| `<leader>tf` (normal) | dsh: Add file to TUI | `plugins/dsh.lua` |
-| `<leader>tv` (visual) | dsh: Add selection to TUI | `plugins/dsh.lua` |
-| `<leader>.` (terminal normal) | dsh: Close TUI window | `plugins/dsh.lua` |
-| `<C-S-o>` (normal) | Jump to dsh terminal | `plugins/dsh.lua` |
-| `<C-S-o>` (terminal) | Jump to editor buffer | `plugins/dsh.lua` |
+| `<leader>.` (normal/visual/terminal) | Toggle Oh My Pi | `plugins/pi-nvim.lua` |
+| `<C-S-o>` (normal/visual) | Jump to OMP terminal | `plugins/pi-nvim.lua` |
+| `<C-S-o>` (terminal) | Jump to editor buffer | `plugins/pi-nvim.lua` |
+| `<leader>aa` (normal/visual) | Pi: Open dialog | `plugins/pi-nvim.lua` |
+| `<leader>af` (normal) | Pi: Send file | `plugins/pi-nvim.lua` |
+| `<leader>as` (visual) | Pi: Send selection | `plugins/pi-nvim.lua` |
+| `<leader>ab` (normal) | Pi: Send buffer | `plugins/pi-nvim.lua` |
+| `<leader>ao` (normal) | Pi: List sessions | `plugins/pi-nvim.lua` |
 | `<leader>f` (normal) | find files | `plugins/fzf.lua` |
 | `<leader>t` (normal) | Search todo comments in buffer | `plugins/fzf.lua` |
 | `<leader>T` (normal) | Search todo comments in project | `plugins/fzf.lua` |
