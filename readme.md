@@ -69,6 +69,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>y` (normal/visual) | copy to clipboard | `core/keymap.lua` |
 | `<C-a>` (normal) | select all | `core/keymap.lua` |
 | `<C-s>` (normal) | write | `core/keymap.lua` |
+| `<C-n>` (terminal) | Terminal normal mode | `core/keymap.lua` |
 | `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
 | `<leader>.` (normal/visual/terminal) | Toggle Oh My Pi | `plugins/pi-nvim.lua` |
 | `<C-S-o>` (normal/visual) | Jump to OMP terminal | `plugins/pi-nvim.lua` |
@@ -79,16 +80,14 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>ab` (normal) | Pi: Send buffer | `plugins/pi-nvim.lua` |
 | `<leader>ao` (normal) | Pi: List sessions | `plugins/pi-nvim.lua` |
 | `<leader>f` (normal) | find files | `plugins/fzf.lua` |
-| `<leader>t` (normal) | Search todo comments in buffer | `plugins/fzf.lua` |
-| `<leader>T` (normal) | Search todo comments in project | `plugins/fzf.lua` |
+| `<leader>t` (normal) | Search TODOs in current buffer | `plugins/fzf.lua` |
+| `<leader>T` (normal) | Search TODO comments in project | `plugins/fzf.lua` |
 | `<leader>C` (normal) | find nvim config files | `plugins/fzf.lua` |
 | `<leader>d` (normal) | Search Diagnostics | `plugins/fzf.lua` |
 | `<leader>k` (normal) | Search keymaps | `plugins/fzf.lua` |
-| `<leader>S` (normal) | Search LSP dynamic workspace symbols | `plugins/fzf.lua` |
-| `<leader>s` (normal) | Search LSP document symbols | `plugins/fzf.lua` |
+| `<leader>S` (normal) | Search workspace symbols | `plugins/fzf.lua` |
+| `<leader>s` (normal) | Search document symbols | `plugins/fzf.lua` |
 | `<leader>/` (normal) | Search string (live grep) | `plugins/fzf.lua` |
-| `gc` (visual) | Toggle block comment | `default` |
-| `gcc` (normal) | Toggle line comment | `default` |
 | `<leader>L` (normal) | restart lsp | `core/keymap.lua` |
 | `K` (normal) | Lspsaga hover documentation | `plugins/lspsaga.lua` |
 | `gr` (normal) | Lspsaga LSP finder | `plugins/lspsaga.lua` |
@@ -119,7 +118,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `[m` (normal/visual/operator) | goto previous function end | `plugins/treesitter-textobjects.lua` |
 | `<leader>gb` (normal/visual) | Open git blame link | `plugins/gitlinker.lua` |
 | `<leader>gg` (normal/visual) | Open git link | `plugins/gitlinker.lua` |
-| `<leader>gc` (normal) | search git commits for current buffer | `plugins/fzf.lua` |
+| `<leader>gc` (normal) | Search git commits for current buffer | `plugins/fzf.lua` |
 | `<A-j>` (normal/visual) | Move line/block down | `plugins/move.lua` |
 | `<A-k>` (normal/visual) | Move line/block up | `plugins/move.lua` |
 | `<A-h>` (normal/visual) | Move word/horizontal block left | `plugins/move.lua` |
