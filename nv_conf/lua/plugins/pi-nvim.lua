@@ -53,14 +53,61 @@ end
 
 return {
 	"carderne/pi-nvim",
-	event = "VimEnter",
-	enabled = false,
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"folke/snacks.nvim",
-		"rauls-kjarners/omp.nvim",
 	},
 	keys = {
+		{
+			"<leader>.",
+			function()
+				require("snacks.terminal").toggle(omp_cmd, {
+					win = {
+						enter = false,
+						position = "right",
+						width = 0.4,
+					},
+				})
+			end,
+			desc = "Toggle Oh My Pi",
+			mode = { "n", "v", "t" },
+		},
+		{
+			"<C-S-o>",
+			function()
+				for _, win in ipairs(vim.api.nvim_list_wins()) do
+					local buf = vim.api.nvim_win_get_buf(win)
+					local buf_name = vim.api.nvim_buf_get_name(buf)
+					if vim.bo[buf].buftype == "terminal" and buf_name:find("omp") then
+						vim.api.nvim_set_current_win(win)
+						vim.cmd("startinsert") -- 自动进入插入模式
+						return
+					end
+				end
+				vim.notify("未找到 omp 终端窗口", vim.log.levels.warn)
+			end,
+			desc = "Jump to OMP Terminal",
+			mode = { "n", "v" },
+		},
+		{
+			"<C-S-o>",
+			function()
+				local current_win = vim.api.nvim_get_current_win()
+				for _, win in ipairs(vim.api.nvim_list_wins()) do
+					if win ~= current_win then
+						local buf = vim.api.nvim_win_get_buf(win)
+						if vim.bo[buf].buftype ~= "terminal" then
+							vim.api.nvim_set_current_win(win)
+							return
+						end
+					end
+				end
+				vim.notify("未找到普通编辑窗口", vim.log.levels.WARN)
+			end,
+			desc = "Jump to Editor Buffer",
+			mode = "t", -- 仅在终端输入模式下生效
+		},
 		{
 			"<leader>aa",
 			function()

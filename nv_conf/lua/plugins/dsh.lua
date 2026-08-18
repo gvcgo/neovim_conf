@@ -1,6 +1,7 @@
 return {
 	"AlbinZhu/dsh.nvim",
 	lazy = false, -- 插件很小，直接启动加载即可
+	enabled = false,
 	keys = {
 		-- 2. 从普通 Buffer 跳转到 OMP 终端 (Normal Mode)
 		{
