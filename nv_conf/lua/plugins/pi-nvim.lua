@@ -1,4 +1,4 @@
-local omp_cmd = "omp 'You are a code assistant, writer and viewer.'"
+local omp_cmd = "omp"
 
 local function omp_opts()
 	return {
@@ -10,42 +10,111 @@ local function omp_opts()
 	}
 end
 
+local function omp_terminal()
+	return require("snacks.terminal").get(omp_cmd, { create = false })
+end
+
 local function ensure_omp()
-	local terminal = require("snacks.terminal").get(omp_cmd, { create = false })
+	local terminal = omp_terminal()
 	if terminal then
-		return
+		return terminal
 	end
 
-	require("snacks.terminal").open(omp_cmd, omp_opts())
+	return require("snacks.terminal").open(omp_cmd, omp_opts())
+end
+
+local function send_to_omp(message, retry)
+	local terminal = omp_terminal()
+	local buf = terminal and terminal.buf
+	local job_id = buf and vim.b[buf].terminal_job_id
+	if not job_id then
+		retry = (retry or 0) + 1
+		if retry < 50 then
+			vim.defer_fn(function()
+				send_to_omp(message, retry)
+			end, 100)
+			return true
+		end
+		return false
+	end
+
+	local payload = "\x1b[200~" .. message .. "\x1b[201~\r"
+	vim.api.nvim_chan_send(job_id, payload)
+	vim.notify("Sent to omp", vim.log.levels.INFO)
+	return true
+end
+
+local function bridge_pi_prompt_to_omp()
+	local pi = require("pi-nvim")
+	local original_prompt = pi.prompt
+
+	pi.prompt = function(message)
+		if type(message) == "string" and omp_terminal() then
+			if send_to_omp(message) then
+				return
+			end
+		end
+		return original_prompt(message)
+	end
 end
 
 local function run_pi_command(command)
 	local mode = vim.fn.mode()
 	local is_visual = mode == "v" or mode == "V" or mode == "\22"
+	local visual_range
+	if is_visual then
+		-- Opening omp and waiting for its socket can outlive visual mode.
+		local start_line = vim.fn.line("'<")
+		local end_line = vim.fn.line("'>")
+		if start_line == 0 or end_line == 0 then
+			vim.notify("No visual selection", vim.log.levels.WARN)
+			return
+		end
+		visual_range = { math.min(start_line, end_line), math.max(start_line, end_line) }
+	end
+
 	ensure_omp()
 
 	local function execute()
-		if is_visual then
-			vim.cmd("'<,'>" .. command)
+		if visual_range then
+			vim.cmd(("%d,%d%s"):format(visual_range[1], visual_range[2], command))
 		else
 			vim.cmd(command)
 		end
 	end
 
 	local attempts = 0
-	local function wait_for_session()
-		if require("pi-nvim").get_socket_path() then
-			execute()
-			return
-		end
-
+	local wait_for_session
+	wait_for_session = function()
 		attempts = attempts + 1
 		if attempts >= 50 then
 			execute()
 			return
 		end
 
-		vim.defer_fn(wait_for_session, 100)
+		local socket_path = require("pi-nvim").get_socket_path()
+		if not socket_path then
+			vim.defer_fn(wait_for_session, 100)
+			return
+		end
+
+		local uv = vim.uv or vim.loop
+		local client = uv.new_pipe(false)
+		if not client then
+			vim.defer_fn(wait_for_session, 100)
+			return
+		end
+
+		client:connect(socket_path, function(err)
+			client:close()
+			vim.schedule(function()
+				if err then
+					vim.defer_fn(wait_for_session, 100)
+				else
+					execute()
+				end
+			end)
+		end)
 	end
 
 	wait_for_session()
@@ -85,7 +154,7 @@ return {
 						return
 					end
 				end
-				vim.notify("未找到 omp 终端窗口", vim.log.levels.warn)
+				vim.notify("OMP terminal window not found", vim.log.levels.warn)
 			end,
 			desc = "Jump to OMP Terminal",
 			mode = { "n", "v" },
@@ -103,7 +172,7 @@ return {
 						end
 					end
 				end
-				vim.notify("未找到普通编辑窗口", vim.log.levels.WARN)
+				vim.notify("Regular editor window not found", vim.log.levels.WARN)
 			end,
 			desc = "Jump to Editor Buffer",
 			mode = "t", -- 仅在终端输入模式下生效
@@ -154,5 +223,6 @@ return {
 			socket_path = nil, -- auto-discover
 			set_default_keymaps = false,
 		})
+		bridge_pi_prompt_to_omp()
 	end,
 }
