@@ -4,8 +4,8 @@ local function omp_opts()
 	return {
 		win = {
 			enter = false,
-			position = "right",
-			width = 0.4,
+			position = "left",
+			width = 0.3,
 		},
 	}
 end
@@ -131,13 +131,7 @@ return {
 		{
 			"<leader>.",
 			function()
-				require("snacks.terminal").toggle(omp_cmd, {
-					win = {
-						enter = false,
-						position = "right",
-						width = 0.4,
-					},
-				})
+				require("snacks.terminal").toggle(omp_cmd, omp_opts())
 			end,
 			desc = "Toggle Oh My Pi",
 			mode = { "n", "v", "t" },
