@@ -1,6 +1,38 @@
 #!/bin/sh
+# install.sh — Install the neovim_conf configuration.
+#
+# Verifies the external tools required by the configuration (see README
+# "Requirements") and, when all are present, installs this repository's
+# nv_conf directory as a symlink at ~/.config/nvim, backing up any existing
+# configuration first.
+#
+# Usage:
+#   sh install.sh
+#   curl -fsSL https://raw.githubusercontent.com/gvcgo/neovim_conf/refs/heads/main/install.sh | bash
 
 set -eu
+
+# --- Configuration ---------------------------------------------------------
+
+REPO_URL="https://github.com/gvcgo/neovim_conf.git"
+REPO_NAME="neovim_conf"
+CONFIG_SUBDIR="nv_conf"
+
+CONFIG_ROOT="$HOME/.config"
+REPO_DIR="$CONFIG_ROOT/$REPO_NAME"
+NVIM_CONFIG="$CONFIG_ROOT/nvim"
+
+# Minimum supported Neovim version (see README "Requirements").
+REQUIRED_NVIM_MAJOR=0
+REQUIRED_NVIM_MINOR=12
+REQUIRED_NVIM_PATCH=4
+
+# External commands the configuration depends on (see README "Requirements").
+REQUIRED_COMMANDS="nvim git rg fzf fd tree-sitter curl unzip gzip tar make omp"
+
+os_name=$(uname -s)
+
+# --- Logging and errors ----------------------------------------------------
 
 log() {
     printf '%s\n' "==> $*"
@@ -11,127 +43,180 @@ die() {
     exit 1
 }
 
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+is_integer() {
+    case $1 in
+        ''|*[!0-9]*) return 1 ;;
+        *) return 0 ;;
+    esac
+}
+
+# --- Prerequisite checks ---------------------------------------------------
+
+# Exit nonzero unless `nvim` is available and >= REQUIRED_NVIM_*.
+nvim_version_is_supported() {
+    command_exists nvim || return 1
+
+    version=$(nvim --version | { IFS= read -r line; printf '%s\n' "$line"; })
+    version=${version#NVIM v}   # strip the leading "NVIM v"
+    version=${version%%-*}      # drop any "-dev"/"-nightly" suffix
+
+    major=${version%%.*}
+    rest=${version#*.}
+    minor=${rest%%.*}
+    patch=${rest#*.}
+
+    # Require a numeric MAJOR.MINOR.PATCH triplet.
+    is_integer "$major" && is_integer "$minor" && is_integer "$patch" || return 1
+    [ "$version" = "$major.$minor.$patch" ] || return 1
+
+    [ "$major" -gt "$REQUIRED_NVIM_MAJOR" ] || \
+        { [ "$major" -eq "$REQUIRED_NVIM_MAJOR" ] && [ "$minor" -gt "$REQUIRED_NVIM_MINOR" ]; } || \
+        { [ "$major" -eq "$REQUIRED_NVIM_MAJOR" ] && [ "$minor" -eq "$REQUIRED_NVIM_MINOR" ] && \
+          [ "$patch" -ge "$REQUIRED_NVIM_PATCH" ]; }
+}
+
+# Exit nonzero unless a JetBrains Mono Nerd Font is installed.
+nerd_font_is_installed() {
+    if [ "$os_name" = Darwin ]; then
+        for dir in "$HOME/Library/Fonts" /Library/Fonts /System/Library/Fonts; do
+            for file in "$dir"/*JetBrainsMono*NerdFont* "$dir"/*JetBrainsMono*"Nerd Font"*; do
+                [ -e "$file" ] && return 0
+            done
+        done
+        return 1
+    fi
+
+    command_exists fc-list || return 1
+    fc-list : family fullname | grep -Eqi 'JetBrains ?Mono.*Nerd Font'
+}
+
+check_prerequisites() {
+    case "$os_name" in
+        Darwin|Linux) ;;
+        *) die "Unsupported operating system: $os_name" ;;
+    esac
+
+    log "Verifying required commands"
+    missing=""
+    for cmd in $REQUIRED_COMMANDS; do
+        command_exists "$cmd" || missing="$missing\n  - $cmd"
+    done
+    if [ -n "$missing" ]; then
+        printf 'ERROR: Missing required commands:%b\n' "$missing" >&2
+        exit 1
+    fi
+
+    nvim_version_is_supported || \
+        die "Neovim $REQUIRED_NVIM_MAJOR.$REQUIRED_NVIM_MINOR.$REQUIRED_NVIM_PATCH or later is required"
+
+    log "Verifying Nerd Font"
+    if [ "$os_name" = Linux ] && ! command_exists fc-list; then
+        die "fontconfig (fc-list) is missing"
+    fi
+    nerd_font_is_installed || die "JetBrains Mono Nerd Font could not be verified"
+}
+
+# --- Rollback on failure ---------------------------------------------------
+
 staging_path=""
 rollback_target=""
 rollback_backup=""
+
 cleanup() {
     if [ -n "$staging_path" ] && { [ -e "$staging_path" ] || [ -L "$staging_path" ]; }; then
         rm -rf "$staging_path"
     fi
+
     if [ -n "$rollback_target" ] && [ -n "$rollback_backup" ] && \
         [ ! -e "$rollback_target" ] && [ ! -L "$rollback_target" ] && \
         { [ -e "$rollback_backup" ] || [ -L "$rollback_backup" ]; }; then
         mv "$rollback_backup" "$rollback_target"
     fi
 }
-trap cleanup 0
+
+trap cleanup EXIT
 trap 'cleanup; trap - HUP; kill -HUP $$' HUP
 trap 'cleanup; trap - INT; kill -INT $$' INT
 trap 'cleanup; trap - TERM; kill -TERM $$' TERM
 
-nvim_version_at_least_0_12_4() {
-    command -v nvim >/dev/null 2>&1 || return 1
-    version=$(nvim --version | { IFS= read -r first_line; printf '%s\n' "$first_line"; })
-    version=${version#NVIM v}
-    version=${version%%-*}
-    old_ifs=$IFS
-    IFS=.
-    set -- $version
-    IFS=$old_ifs
-    [ "$#" -eq 3 ] || return 1
-    major=$1 minor=$2 patch=$3
-    for field in "$major" "$minor" "$patch"; do
-        [ -n "$field" ] || return 1
-        case "$field" in *[!0-9]*) return 1 ;; esac
-    done
-    [ "$major" -gt 0 ] || \
-        { [ "$major" -eq 0 ] && [ "$minor" -gt 12 ]; } || \
-        { [ "$major" -eq 0 ] && [ "$minor" -eq 12 ] && [ "$patch" -ge 4 ]; }
-}
-
-os=$(uname -s)
-case "$os" in
-    Darwin|Linux) ;;
-    *) die "Cannot verify prerequisites on unsupported operating system: $os" ;;
-esac
-
-log "Verifying required commands"
-missing_dependencies=""
-for command_name in nvim git rg fzf curl fd unzip gzip tar tree-sitter make opencode; do
-    if ! command -v "$command_name" >/dev/null 2>&1; then
-        missing_dependencies="$missing_dependencies $command_name"
-    fi
-done
-[ -z "$missing_dependencies" ] || die "Missing required commands:$missing_dependencies"
-
-nvim_version_at_least_0_12_4 || die "Neovim >= 0.12.4 is required"
-
-if [ "$os" = Darwin ]; then
-    nerd_font_found=false
-    for font_dir in "$HOME/Library/Fonts" /Library/Fonts /System/Library/Fonts; do
-        for font_file in "$font_dir"/*JetBrainsMono*NerdFont* "$font_dir"/*JetBrainsMono*"Nerd Font"*; do
-            if [ -e "$font_file" ]; then nerd_font_found=true; break 2; fi
-        done
-    done
-    [ "$nerd_font_found" = true ] || die "JetBrains Mono Nerd Font could not be verified"
-else
-    command -v fc-list >/dev/null 2>&1 || die "fontconfig (fc-list) is missing"
-    fc-list : family fullname | grep -Eqi 'JetBrains ?Mono.*Nerd Font' || die "JetBrains Mono Nerd Font could not be verified"
-fi
-
-log "Installing Neovim configuration"
-config_root="$HOME/.config"
-repo_dir="$config_root/neovim_conf"
-mkdir -p "$config_root"
-if [ -d "$repo_dir/.git" ]; then
-    current_branch=$(git -C "$repo_dir" symbolic-ref --quiet --short HEAD) || \
-        die "$repo_dir is in detached HEAD state; check out main before rerunning"
-    [ "$current_branch" = main ] || die "$repo_dir is on branch '$current_branch'; check out main before rerunning"
-    git -C "$repo_dir" pull --ff-only origin main
-else
-    [ ! -e "$repo_dir" ] || die "$repo_dir exists but is not a Git repository"
-    git clone --filter=blob:none --sparse https://github.com/gvcgo/neovim_conf.git "$repo_dir"
-fi
-git -C "$repo_dir" sparse-checkout set nv_conf
+# --- Installation ----------------------------------------------------------
 
 canonical_dir() {
     (CDPATH= cd -P "$1" 2>/dev/null && pwd -P)
 }
 
+# Exit 0 if $1 is a symlink that resolves (following links) to $2.
 link_points_to_dir() {
     link_path=$1
     expected_dir=$2
     [ -L "$link_path" ] || return 1
+
     link_text=$(readlink "$link_path") || return 1
     case "$link_text" in
         /*) link_dir=$link_text ;;
-        *) link_dir=$(dirname "$link_path")/$link_text ;;
+        *)  link_dir=$(dirname "$link_path")/$link_text ;;
     esac
+
     actual=$(canonical_dir "$link_dir") || return 1
     expected=$(canonical_dir "$expected_dir") || return 1
     [ "$actual" = "$expected" ]
 }
 
-nvim_config="$config_root/nvim"
-if link_points_to_dir "$nvim_config" "$repo_dir/nv_conf"; then
-    log "Neovim configuration link is already installed"
-else
-    config_link_stage="$config_root/.nvim.link.$$"
-    staging_path=$config_link_stage
-    [ ! -e "$config_link_stage" ] && [ ! -L "$config_link_stage" ] || \
-        die "Configuration link staging path already exists: $config_link_stage"
-    ln -s "$repo_dir/nv_conf" "$config_link_stage"
+fetch_repo() {
+    mkdir -p "$CONFIG_ROOT"
 
-    if [ -e "$nvim_config" ] || [ -L "$nvim_config" ]; then
-        backup="$config_root/nvim.bak.$(date +%Y%m%d%H%M%S).$$"
-        rollback_target=$nvim_config
+    if [ -d "$REPO_DIR/.git" ]; then
+        current_branch=$(git -C "$REPO_DIR" symbolic-ref --quiet --short HEAD) || \
+            die "$REPO_DIR is in a detached HEAD state; check out main before rerunning"
+        [ "$current_branch" = main ] || \
+            die "$REPO_DIR is on branch '$current_branch'; check out main before rerunning"
+        git -C "$REPO_DIR" pull --ff-only origin main
+    else
+        [ ! -e "$REPO_DIR" ] || die "$REPO_DIR exists but is not a Git repository"
+        git clone --filter=blob:none --sparse "$REPO_URL" "$REPO_DIR"
+    fi
+
+    git -C "$REPO_DIR" sparse-checkout set "$CONFIG_SUBDIR"
+}
+
+activate_symlink() {
+    if link_points_to_dir "$NVIM_CONFIG" "$REPO_DIR/$CONFIG_SUBDIR"; then
+        log "Neovim configuration link is already installed"
+        return 0
+    fi
+
+    staging="$CONFIG_ROOT/.nvim.link.$$"
+    [ ! -e "$staging" ] && [ ! -L "$staging" ] || \
+        die "Configuration link staging path already exists: $staging"
+
+    staging_path=$staging
+    ln -s "$REPO_DIR/$CONFIG_SUBDIR" "$staging"
+
+    if [ -e "$NVIM_CONFIG" ] || [ -L "$NVIM_CONFIG" ]; then
+        backup="$CONFIG_ROOT/nvim.bak.$(date +%Y%m%d%H%M%S).$$"
+        rollback_target=$NVIM_CONFIG
         rollback_backup=$backup
         log "Backing up existing configuration to $backup"
-        mv "$nvim_config" "$backup"
+        mv "$NVIM_CONFIG" "$backup"
     fi
-    mv "$config_link_stage" "$nvim_config" || die "Could not activate Neovim configuration link"
+
+    mv "$staging" "$NVIM_CONFIG" || die "Could not activate Neovim configuration link"
+
     staging_path=""
     rollback_target=""
     rollback_backup=""
-fi
-log "Installation complete"
+}
+
+main() {
+    check_prerequisites
+    log "Installing Neovim configuration"
+    fetch_repo
+    activate_symlink
+    log "Installation complete"
+}
+
+main "$@"
