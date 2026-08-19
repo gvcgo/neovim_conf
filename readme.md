@@ -6,8 +6,8 @@
 - [fzf](https://github.com/junegunn/fzf)
 - [fd](https://github.com/sharkdp/fd) 
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
-- [~~opencode~~](https://github.com/anomalyco/opencode)
 - [oh-my-pi](https://github.com/can1357/oh-my-pi)
+- [~~opencode~~](https://github.com/anomalyco/opencode)
 - [~~deepseek-harness~~](https://github.com/deepseek-ai/deepseek-harness)
 - git
 - curl
@@ -44,7 +44,7 @@ bun install -g @oh-my-pi/pi-coding-agent
 ## Terminal Proxy
 
 ```bash
-# fix opencode/omp connection for opencode.nvim when a proxy has been set for terminal
+# fix opencode connection for opencode.nvim when a proxy has been set for terminal
 alias OnProxy="export http_proxy=http://127.0.0.1:2023;export https_proxy=http://127.0.0.1:2023;export no_proxy=127.0.0.1,localhost,::1"
 alias OffProxy="unset http_proxy;unset https_proxy"
 ```
@@ -175,10 +175,9 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - Treesitter text objects
 - [todo-comments.nvim](https://github.com/alexmozaidze/tree-comment.nvim) - Highlight TODO comments
 - [move.nvim](https://github.com/hinell/move.nvim) - Move lines and blocks with Alt+direction keys
-- [~~opencode.nvim~~](https://github.com/nickjvandyke/opencode.nvim) - AI-powered coding assistant
-- [dsh.nvim](https://github.com/AlbinZhu/dsh.nvim) - DeepSeek Harness (dsh) coding agent integration
 - [pi-nvim](https://github.com/carderne/pi-nvim) - Bridge between pi coding agent and Neovim
-- [~~dsh.nvim~~](https://github.com/AlbinZhu/dsh.nvim) - Neovim plugin for DeepSeek Harness
+- [~~opencode.nvim~~](https://github.com/nickjvandyke/opencode.nvim) - AI-powered coding assistant
+- [~~dsh.nvim~~](https://github.com/AlbinZhu/dsh.nvim) - DeepSeek Harness (dsh) coding agent integration
 
 ### Plugin Dependencies
 
