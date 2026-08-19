@@ -69,9 +69,11 @@ local function run_pi_command(command)
 	local is_visual = mode == "v" or mode == "V" or mode == "\22"
 	local visual_range
 	if is_visual then
-		-- Opening omp and waiting for its socket can outlive visual mode.
-		local start_line = vim.fn.line("'<")
-		local end_line = vim.fn.line("'>")
+		-- `'<`/`'>` are only set when visual mode is left; on the first-ever
+		-- selection they are still 0 here. Use the live `v` (selection start)
+		-- and `.` (cursor) marks instead, which are updated while in visual mode.
+		local start_line = vim.fn.getpos("v")[2]
+		local end_line = vim.fn.getpos(".")[2]
 		if start_line == 0 or end_line == 0 then
 			vim.notify("No visual selection", vim.log.levels.WARN)
 			return
