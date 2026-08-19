@@ -79,11 +79,11 @@ nvim_version_is_supported() {
           [ "$patch" -ge "$REQUIRED_NVIM_PATCH" ]; }
 }
 
-# Exit nonzero unless a JetBrains Mono Nerd Font is installed.
+# Exit nonzero unless some Nerd Font is installed.
 nerd_font_is_installed() {
     if [ "$os_name" = Darwin ]; then
         for dir in "$HOME/Library/Fonts" /Library/Fonts /System/Library/Fonts; do
-            for file in "$dir"/*JetBrainsMono*NerdFont* "$dir"/*JetBrainsMono*"Nerd Font"*; do
+            for file in "$dir"/*NerdFont* "$dir"/*"Nerd Font"*; do
                 [ -e "$file" ] && return 0
             done
         done
@@ -91,7 +91,7 @@ nerd_font_is_installed() {
     fi
 
     command_exists fc-list || return 1
-    fc-list : family fullname | grep -Eqi 'JetBrains ?Mono.*Nerd Font'
+    fc-list : family fullname | grep -Eqi 'Nerd Font'
 }
 
 check_prerequisites() {
@@ -117,7 +117,7 @@ check_prerequisites() {
     if [ "$os_name" = Linux ] && ! command_exists fc-list; then
         die "fontconfig (fc-list) is missing"
     fi
-    nerd_font_is_installed || die "JetBrains Mono Nerd Font could not be verified"
+    nerd_font_is_installed || die "A Nerd Font could not be verified"
 }
 
 # --- Rollback on failure ---------------------------------------------------
