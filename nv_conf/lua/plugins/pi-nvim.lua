@@ -66,17 +66,19 @@ end
 
 local function run_pi_command(command)
 	local mode = vim.fn.mode()
-	local is_visual = mode == "v" or mode == "V" or mode == "\22"
+	local is_visual = mode == "v" or mode == "V" or mode == "\22" or mode == "s" or mode == "S" or mode == "\19"
 	local visual_range
 	if is_visual then
-		-- `'<`/`'>` are only set when visual mode is left; on the first-ever
-		-- selection they are still 0 here. Use the live `v` (selection start)
-		-- and `.` (cursor) marks instead, which are updated while in visual mode.
+		-- `'<`/`'>` are only set when visual mode is left, so read the live
+		-- `v` (one end) and `.` (cursor, the other end) marks instead. The
+		-- exact line numbers only flag the plugin to capture the selection
+		-- itself (it re-reads `'<`/`'>`), so they needn't be precise. `v` can
+		-- be unset (0) on some setups, so fall back to the cursor line rather
+		-- than erroring out and dropping the selection.
 		local start_line = vim.fn.getpos("v")[2]
 		local end_line = vim.fn.getpos(".")[2]
-		if start_line == 0 or end_line == 0 then
-			vim.notify("No visual selection", vim.log.levels.WARN)
-			return
+		if start_line == 0 then
+			start_line = end_line
 		end
 		visual_range = { math.min(start_line, end_line), math.max(start_line, end_line) }
 	end
