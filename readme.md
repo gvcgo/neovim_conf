@@ -1,3 +1,23 @@
+## Introduction
+
+This project is a modern, batteries-included Neovim configuration built with
+[lazy.nvim](https://github.com/folke/lazy.nvim). It aims to provide a full-featured
+coding environment out of the box:
+
+- **Editor UX** — fuzzy finding (fzf-lua), file explorer (nvim-tree), enhanced
+  motions (flash.nvim, nvim-spider), buffer/tabline, and a polished statusline.
+- **LSP & completion** — Mason-managed language servers, lspsaga.nvim workflows,
+  and fast blink.cmp completion, all wired into treesitter text objects.
+- **AI coding agent** — first-class integration with the
+  [Oh My Pi](https://github.com/can1357/oh-my-pi) coding agent via pi-nvim.
+- **Git & code quality** — gitsigns, gitlinker, codediff, grug-far, conform.nvim,
+  and TODO comment highlighting.
+- **Looks & feel** — Everforest colorscheme, nerdfont icons, and a curated set of
+  keybindings documented below.
+
+> **Note:** opencode and deepseek-harness integrations are deprecated (struck
+> through below); Oh My Pi is the active AI-agent backend.
+
 ## Requirements
 
 - [neovim 0.12.4+](https://github.com/neovim/neovim)
