@@ -64,8 +64,8 @@ return {
 		-- end, { desc = "Search git diff for workspace" })
 
 		vim.keymap.set("n", "<leader>gc", function()
-			fzf.git_bcommits()
-		end, { desc = "Search git commit for current buffer" })
+			fzf.git_commits()
+		end, { desc = "Search git commit log" })
 
 		vim.keymap.set("n", "<leader>gr", function()
 			fzf.git_reflog()
