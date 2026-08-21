@@ -170,7 +170,7 @@ return {
 					local buf_name = vim.api.nvim_buf_get_name(buf)
 					if vim.bo[buf].buftype == "terminal" and buf_name:find("omp") then
 						vim.api.nvim_set_current_win(win)
-						vim.cmd("startinsert") -- 自动进入插入模式
+						vim.cmd("startinsert") -- Auto-enter insert mode
 						return
 					end
 				end
@@ -195,7 +195,7 @@ return {
 				vim.notify("Regular editor window not found", vim.log.levels.WARN)
 			end,
 			desc = "Jump to Editor Buffer",
-			mode = "t", -- 仅在终端输入模式下生效
+			mode = "t", -- Only active in terminal input mode
 		},
 		{
 			"<leader>aa",

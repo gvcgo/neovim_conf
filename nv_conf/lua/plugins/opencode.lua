@@ -65,23 +65,23 @@ return {
 			require("opencode").command("session.half.page.down")
 		end, { desc = "Scroll OpenCode down" })
 
-		-- 在代码 buffer 和 OpenCode 终端之间切换焦点
+		-- Toggle focus between the code buffer and the OpenCode terminal
 		vim.keymap.set({ "n", "t" }, "<S-C-o>", function()
-			-- 获取当前已打开的 OpenCode 终端实例（如果未创建则不操作）
+			-- Get the currently open OpenCode terminal instance (no-op if not created)
 			local win = require("snacks.terminal").get(opencode_cmd, { create = false })
 
 			if win and win.win and vim.api.nvim_win_is_valid(win.win) then
 				if vim.api.nvim_get_current_win() == win.win then
-					-- 1. 如果当前光标在 OpenCode 窗口内，切回上一个窗口（代码 buffer）
+					-- 1. If the cursor is inside the OpenCode window, switch back to the previous window (code buffer)
 					if vim.fn.mode() == "t" then
-						-- 退出终端插入模式，确保可以正常执行窗口跳转
+						-- Exit terminal insert mode so window navigation works correctly
 						vim.cmd("stopinsert")
 					end
 					vim.cmd("wincmd p")
 				else
-					-- 2. 如果当前光标在代码 buffer 内，跳转到 OpenCode 窗口
+					-- 2. If the cursor is inside the code buffer, jump to the OpenCode window
 					vim.api.nvim_set_current_win(win.win)
-					-- 自动进入终端插入模式，方便你直接开始打字交流
+					-- Auto-enter terminal insert mode so you can start typing right away
 					vim.cmd("startinsert")
 				end
 			end
