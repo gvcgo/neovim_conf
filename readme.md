@@ -69,7 +69,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>y` (normal/visual) | copy to clipboard | `core/keymap.lua` |
 | `<C-a>` (normal) | select all | `core/keymap.lua` |
 | `<C-s>` (normal) | write | `core/keymap.lua` |
-| `<C-m>` (terminal) | Terminal normal mode | `core/keymap.lua` |
+| `<C-S-n>` (terminal) | Terminal normal mode | `core/keymap.lua` |
 | `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
 | `<leader>.` (normal/visual/terminal) | Toggle Oh My Pi | `plugins/pi-nvim.lua` |
 | `<C-S-o>` (normal/visual) | Jump to OMP terminal | `plugins/pi-nvim.lua` |
