@@ -67,30 +67,46 @@ end
 local function run_pi_command(command)
 	local mode = vim.fn.mode()
 	local is_visual = mode == "v" or mode == "V" or mode == "\22" or mode == "s" or mode == "S" or mode == "\19"
+	local visual_start
+	local visual_end
 	local visual_range
+	local source_win = vim.api.nvim_get_current_win()
 	if is_visual then
-		-- `'<`/`'>` are only set when visual mode is left, so read the live
-		-- `v` (one end) and `.` (cursor, the other end) marks instead. The
-		-- exact line numbers only flag the plugin to capture the selection
-		-- itself (it re-reads `'<`/`'>`), so they needn't be precise. `v` can
-		-- be unset (0) on some setups, so fall back to the cursor line rather
-		-- than erroring out and dropping the selection.
-		local start_line = vim.fn.getpos("v")[2]
-		local end_line = vim.fn.getpos(".")[2]
-		if start_line == 0 then
-			start_line = end_line
+		visual_start = vim.fn.getpos("v")
+		visual_end = vim.fn.getpos(".")
+		if visual_start[2] == 0 then
+			visual_start = visual_end
 		end
+		local start_line = visual_start[2]
+		local end_line = visual_end[2]
 		visual_range = { math.min(start_line, end_line), math.max(start_line, end_line) }
+	end
+
+	if visual_start then
+		vim.cmd([[normal! \<Esc>]])
+		vim.fn.setpos("'<", visual_start)
+		vim.fn.setpos("'>", visual_end)
 	end
 
 	ensure_omp()
 
 	local function execute()
-		if visual_range then
-			vim.cmd(("%d,%d%s"):format(visual_range[1], visual_range[2], command))
-		else
-			vim.cmd(command)
+		if not vim.api.nvim_win_is_valid(source_win) then
+			return
 		end
+
+		vim.api.nvim_win_call(source_win, function()
+			if visual_range then
+				vim.cmd(("%d,%d%s"):format(visual_range[1], visual_range[2], command))
+			else
+				vim.cmd(command)
+			end
+		end)
+	end
+
+	if visual_range then
+		execute()
+		return
 	end
 
 	local attempts = 0
