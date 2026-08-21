@@ -69,7 +69,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>y` (normal/visual) | copy to clipboard | `core/keymap.lua` |
 | `<C-a>` (normal) | select all | `core/keymap.lua` |
 | `<C-s>` (normal) | write | `core/keymap.lua` |
-| `<C-n>` (terminal) | Terminal normal mode | `core/keymap.lua` |
+| `<C-m>` (terminal) | Terminal normal mode | `core/keymap.lua` |
 | `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
 | `<leader>.` (normal/visual/terminal) | Toggle Oh My Pi | `plugins/pi-nvim.lua` |
 | `<C-S-o>` (normal/visual) | Jump to OMP terminal | `plugins/pi-nvim.lua` |
@@ -119,6 +119,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>gb` (normal/visual) | Open git blame link | `plugins/gitlinker.lua` |
 | `<leader>gg` (normal/visual) | Open git link | `plugins/gitlinker.lua` |
 | `<leader>gc` (normal) | Search git commits for current buffer | `plugins/fzf.lua` |
+| `<leader>gd` (normal) | search git diffs for current workspace | `plugins/gitlinker.lua` |
 | `<A-j>` (normal/visual) | Move line/block down | `plugins/move.lua` |
 | `<A-k>` (normal/visual) | Move line/block up | `plugins/move.lua` |
 | `<A-h>` (normal/visual) | Move word/horizontal block left | `plugins/move.lua` |

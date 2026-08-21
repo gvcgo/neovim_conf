@@ -59,6 +59,10 @@ return {
 			fzf.live_grep()
 		end, { desc = "Search string" })
 
+		vim.keymap.set("n", "<leader>gd", function()
+			fzf.git_diff()
+		end, { desc = "Search git diff for workspace" })
+
 		vim.keymap.set("n", "<leader>gc", function()
 			fzf.git_bcommits()
 		end, { desc = "Search git commit for current buffer" })
