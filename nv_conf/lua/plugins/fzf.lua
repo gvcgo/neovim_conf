@@ -67,6 +67,10 @@ return {
 			fzf.git_bcommits()
 		end, { desc = "Search git commit for current buffer" })
 
+		vim.keymap.set("n", "<leader>gr", function()
+			fzf.git_reflog()
+		end, { desc = "Search git reflog" })
+
 		local todo_pattern = [[(#|//|--|/\*|\*)[^\r\n]*\b(TODO|FIXME|HACK|BUG|NOTE|PERF)\b]]
 		vim.keymap.set("n", "<leader>T", function()
 			fzf.grep_project({

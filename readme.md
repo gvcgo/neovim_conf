@@ -147,6 +147,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>gb` (normal/visual) | Open git blame link | `plugins/gitlinker.lua` |
 | `<leader>gg` (normal/visual) | Open git link | `plugins/gitlinker.lua` |
 | `<leader>gc` (normal) | Search git commits for current buffer | `plugins/fzf.lua` |
+| `<leader>gr` (normal) | Search git reflog | `plugins/fzf.lua` |
 | `<leader>gd` (normal) | CodeDiff: compare current branch with main/master | `plugins/codediff.lua` |
 | `<A-j>` (normal/visual) | Move line/block down | `plugins/move.lua` |
 | `<A-k>` (normal/visual) | Move line/block up | `plugins/move.lua` |
