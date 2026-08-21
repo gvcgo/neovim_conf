@@ -119,7 +119,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>gb` (normal/visual) | Open git blame link | `plugins/gitlinker.lua` |
 | `<leader>gg` (normal/visual) | Open git link | `plugins/gitlinker.lua` |
 | `<leader>gc` (normal) | Search git commits for current buffer | `plugins/fzf.lua` |
-| `<leader>gd` (normal) | search git diffs for current workspace | `plugins/gitlinker.lua` |
+| `<leader>gd` (normal) | CodeDiff: compare current branch with main/master | `plugins/codediff.lua` |
 | `<A-j>` (normal/visual) | Move line/block down | `plugins/move.lua` |
 | `<A-k>` (normal/visual) | Move line/block up | `plugins/move.lua` |
 | `<A-h>` (normal/visual) | Move word/horizontal block left | `plugins/move.lua` |
@@ -169,6 +169,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim) - Find and replace across workspace
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git integration with signs
 - [gitlinker.nvim](https://github.com/linrongbin16/gitlinker.nvim) - Generate shareable links to code on GitHub, GitLab, etc.
+- [codediff.nvim](https://github.com/esmuellert/codediff.nvim) - Side-by-side diff
 - [conform.nvim](https://github.com/stevearc/conform.nvim) - Formatting framework
 - [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) - LSP configuration with Mason
 - [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim) - Enhanced LSP interface and workflows
