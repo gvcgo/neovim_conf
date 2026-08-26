@@ -84,14 +84,14 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<C-w>v` (normal) | split window vertically | Neovim default |
 | `<C-w>q` (normal) | close current window | Neovim default |
 | `jk` (insert) | Esc | `core/keymap.lua` |
-| `q` (visual) | Esc | `core/keymap.lua` |
+| `q` (visual) | exit visual mode | `core/keymap.lua` |
 | `<CR>` (insert) | Accept Blink completion or fallback | `plugins/blink.lua` |
 | `gl` (normal/visual) | goto line end | `core/keymap.lua` |
 | `gh` (normal/visual) | goto line start | `core/keymap.lua` |
 | `gj` (normal) | goto screen bottom | `core/keymap.lua` |
 | `gk` (normal) | goto screen top | `core/keymap.lua` |
 | `ge` (normal/visual) | goto last line | `core/keymap.lua` |
-| `gp` (normal) | got previous buffer | `plugins/bufferline.lua` |
+| `gp` (normal) | goto previous buffer | `plugins/bufferline.lua` |
 | `gn` (normal) | goto next buffer | `plugins/bufferline.lua` |
 | `gm` (normal) | goto specified buffer | `plugins/bufferline.lua` |
 | `<leader>y` (normal/visual) | copy to clipboard | `core/keymap.lua` |
@@ -108,6 +108,8 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>ab` (normal) | Pi: Send buffer | `plugins/pi-nvim.lua` |
 | `<leader>ao` (normal) | Pi: List sessions | `plugins/pi-nvim.lua` |
 | `<leader>f` (normal) | find files | `plugins/fzf.lua` |
+| `<Up>` (Oh My Pi terminal) | scroll up half page | `plugins/pi-nvim.lua` |
+| `<Down>` (Oh My Pi terminal) | scroll down half page | `plugins/pi-nvim.lua` |
 | `<leader>t` (normal) | Search TODOs in current buffer | `plugins/fzf.lua` |
 | `<leader>T` (normal) | Search TODO comments in project | `plugins/fzf.lua` |
 | `<leader>C` (normal) | find nvim config files | `plugins/fzf.lua` |
@@ -127,6 +129,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>o` (normal) | Lspsaga toggle outline | `plugins/lspsaga.lua` |
 | `<leader>v` (normal/terminal) | Lspsaga toggle terminal | `plugins/lspsaga.lua` |
 | `<C-d>` (Lspsaga preview) | Scroll preview down | `plugins/lspsaga.lua` |
+| `q` (Lspsaga rename UI) | quit rename UI | `plugins/lspsaga.lua` |
 | `<C-u>` (Lspsaga preview) | Scroll preview up | `plugins/lspsaga.lua` |
 | `<leader>e` (normal) | toggle nvim-tree | `plugins/nvim-tree.lua` |
 | `<leader>R` (normal) | replace in workspace | `plugins/grug-far.lua` |
@@ -148,11 +151,21 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>gg` (normal/visual) | Open git link | `plugins/gitlinker.lua` |
 | `<leader>gc` (normal) | Search git commits log | `plugins/fzf.lua` |
 | `<leader>gr` (normal) | Search git reflog | `plugins/fzf.lua` |
-| `<leader>gd` (normal) | CodeDiff: compare current branch with main/master | `plugins/codediff.lua` |
-| `<A-j>` (normal/visual) | Move line/block down | `plugins/move.lua` |
-| `<A-k>` (normal/visual) | Move line/block up | `plugins/move.lua` |
-| `<A-h>` (normal/visual) | Move word/horizontal block left | `plugins/move.lua` |
-| `<A-l>` (normal/visual) | Move word/horizontal block right | `plugins/move.lua` |
+| `<leader>gd` (normal) | CodeDiff: compare working tree with HEAD (uncommitted changes) | `plugins/codediff.lua` |
+| `]e` (normal, Git buffer) | next Git hunk | `plugins/git.lua` |
+| `[e` (normal, Git buffer) | previous Git hunk | `plugins/git.lua` |
+| `q` (CodeDiff view) | close diff tab | `plugins/codediff.lua` |
+| `]b` (CodeDiff view) | next change block | `plugins/codediff.lua` |
+| `[b` (CodeDiff view) | previous change block | `plugins/codediff.lua` |
+| `]f` (CodeDiff view) | next file | `plugins/codediff.lua` |
+| `[f` (CodeDiff view) | previous file | `plugins/codediff.lua` |
+| `do` (CodeDiff view) | get changes from the other side | `plugins/codediff.lua` |
+| `dp` (CodeDiff view) | push changes to the other side | `plugins/codediff.lua` |
+| `t` (CodeDiff view) | toggle diff layout | `plugins/codediff.lua` |
+| `gc` (CodeDiff view) | toggle compact mode | `plugins/codediff.lua` |
+| `-` (CodeDiff view) | stage/unstage current file | `plugins/codediff.lua` |
+| `gf` (CodeDiff view) | open file in previous tab | `plugins/codediff.lua` |
+| `g?` (CodeDiff view) | show CodeDiff help | `plugins/codediff.lua` |
 
 ## tree-sitter textobjects
 
