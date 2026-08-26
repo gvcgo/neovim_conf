@@ -1,4 +1,12 @@
 vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "move to window left" })
+vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "move to window below" })
+vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "move to window above" })
+vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "move to window right" })
+vim.keymap.set("n", "<leader>ww", "<C-w>w", { desc = "cycle to next window" })
+vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "split window horizontally" })
+vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "split window vertically" })
+vim.keymap.set("n", "<leader>wq", "<C-w>q", { desc = "close current window" })
 
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true, desc = "Esc" })
 -- vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "cancel search highlight" })

@@ -75,14 +75,14 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 
 | keys | desc | lua file |
 |--------|----------|----------|
-| `<C-w>h` (normal) | move to window left | Neovim default |
-| `<C-w>j` (normal) | move to window below | Neovim default |
-| `<C-w>k` (normal) | move to window above | Neovim default |
-| `<C-w>l` (normal) | move to window right | Neovim default |
-| `<C-w>w` (normal) | cycle to next window | Neovim default |
-| `<C-w>s` (normal) | split window horizontally | Neovim default |
-| `<C-w>v` (normal) | split window vertically | Neovim default |
-| `<C-w>q` (normal) | close current window | Neovim default |
+| `<leader>wh` (normal) | move to window left | `core/keymap.lua` |
+| `<leader>wj` (normal) | move to window below | `core/keymap.lua` |
+| `<leader>wk` (normal) | move to window above | `core/keymap.lua` |
+| `<leader>wl` (normal) | move to window right | `core/keymap.lua` |
+| `<leader>ww` (normal) | cycle to next window | `core/keymap.lua` |
+| `<leader>ws` (normal) | split window horizontally | `core/keymap.lua` |
+| `<leader>wv` (normal) | split window vertically | `core/keymap.lua` |
+| `<leader>wq` (normal) | close current window | `core/keymap.lua` |
 | `jk` (insert) | Esc | `core/keymap.lua` |
 | `q` (visual) | exit visual mode | `core/keymap.lua` |
 | `<CR>` (insert) | Accept Blink completion or fallback | `plugins/blink.lua` |
