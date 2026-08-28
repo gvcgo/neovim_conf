@@ -99,6 +99,14 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<C-s>` (normal) | write | `core/keymap.lua` |
 | `<C-A-n>` (terminal) | Terminal normal mode | `core/keymap.lua` |
 | `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
+| `<A-j>` (normal) | move current line down | `plugins/move.lua` |
+| `<A-k>` (normal) | move current line up | `plugins/move.lua` |
+| `<A-h>` (normal) | move current word left | `plugins/move.lua` |
+| `<A-l>` (normal) | move current word right | `plugins/move.lua` |
+| `<A-j>` (visual) | move selected block down | `plugins/move.lua` |
+| `<A-k>` (visual) | move selected block up | `plugins/move.lua` |
+| `<A-h>` (visual) | move selected block left | `plugins/move.lua` |
+| `<A-l>` (visual) | move selected block right | `plugins/move.lua` |
 | `<leader>.` (normal/visual/terminal) | Toggle Oh My Pi | `plugins/pi-nvim.lua` |
 | `<C-S-o>` (normal/visual) | Jump to OMP terminal | `plugins/pi-nvim.lua` |
 | `<C-S-o>` (terminal) | Jump to editor buffer | `plugins/pi-nvim.lua` |
@@ -124,7 +132,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `gi` (normal) | Lspsaga implementation finder | `plugins/lspsaga.lua` |
 | `gs` (normal) | Lspsaga peek definition | `plugins/lspsaga.lua` |
 | `gd` (normal) | Lspsaga goto definition | `plugins/lspsaga.lua` |
-| `<leader>r` (normal) | Lspsaga rename in project | `plugins/lspsaga.lua` |
+| `<leader>r` (normal) | LSP: rename symbol | `core/keymap.lua` |
 | `<leader>c` (normal/visual) | Lspsaga code action | `plugins/lspsaga.lua` |
 | `<leader>o` (normal) | Lspsaga toggle outline | `plugins/lspsaga.lua` |
 | `<leader>v` (normal/terminal) | Lspsaga toggle terminal | `plugins/lspsaga.lua` |

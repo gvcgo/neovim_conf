@@ -33,7 +33,7 @@ return {
 		{ "gd", "<cmd>Lspsaga goto_definition<CR>", desc = "Lspsaga: Goto Definition" },
 
 		-- { "<leader>D", "<cmd>Lspsaga show_workspace_diagnostics<CR>", desc = "Lspsaga: Show workspace diagnostics" },
-		{ "<leader>r", "<cmd>Lspsaga rename ++project<CR>", desc = "Lspsaga: Rename in Project" },
+		-- { "<leader>r", "<cmd>Lspsaga rename ++project<CR>", desc = "Lspsaga: Rename in Project" },
 		{ "<leader>c", "<cmd>Lspsaga code_action<CR>", mode = { "n", "v" }, desc = "Lspsaga: Code Action" },
 		{ "<leader>o", "<cmd>Lspsaga outline<CR>", desc = "Lspsaga: Toggle Outline" },
 
