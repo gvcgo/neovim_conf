@@ -7,7 +7,8 @@ coding environment out of the box:
 - **Editor UX** — fuzzy finding (fzf-lua), file explorer (nvim-tree), enhanced
   motions (flash.nvim, nvim-spider), buffer/tabline, and a polished statusline.
 - **LSP & completion** — Mason-managed language servers, lspsaga.nvim workflows,
-  and fast blink.cmp completion, all wired into treesitter text objects.
+  incremental symbol renaming, and fast blink.cmp completion, all wired into
+  treesitter text objects.
 - **AI coding agent** — first-class integration with the
   [Oh My Pi](https://github.com/can1357/oh-my-pi) coding agent via pi-nvim.
 - **Git & code quality** — gitsigns, gitlinker, codediff, grug-far, conform.nvim,
@@ -132,7 +133,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `gi` (normal) | Lspsaga implementation finder | `plugins/lspsaga.lua` |
 | `gs` (normal) | Lspsaga peek definition | `plugins/lspsaga.lua` |
 | `gd` (normal) | Lspsaga goto definition | `plugins/lspsaga.lua` |
-| `<leader>r` (normal) | LSP: rename symbol | `core/keymap.lua` |
+| `<leader>r` (normal) | Incremental LSP rename symbol | `plugins/inc-rename.lua` |
 | `<leader>c` (normal/visual) | Lspsaga code action | `plugins/lspsaga.lua` |
 | `<leader>o` (normal) | Lspsaga toggle outline | `plugins/lspsaga.lua` |
 | `<leader>v` (normal/terminal) | Lspsaga toggle terminal | `plugins/lspsaga.lua` |
@@ -223,6 +224,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [conform.nvim](https://github.com/stevearc/conform.nvim) - Formatting framework
 - [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) - LSP configuration with Mason
 - [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim) - Enhanced LSP interface and workflows
+- [inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim) - Incremental LSP symbol renaming
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Treesitter integration
 - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - Treesitter text objects
 - [todo-comments.nvim](https://github.com/alexmozaidze/tree-comment.nvim) - Highlight TODO comments
