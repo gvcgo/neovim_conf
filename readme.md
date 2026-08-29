@@ -11,8 +11,8 @@ coding environment out of the box:
   treesitter text objects.
 - **AI coding agent** — first-class integration with the
   [Oh My Pi](https://github.com/can1357/oh-my-pi) coding agent via pi-nvim.
-- **Git & code quality** — gitsigns, gitlinker, codediff, grug-far, conform.nvim,
-  and TODO comment highlighting.
+- **Git & code quality** — gitsigns, gitlinker, diffview-plus, grug-far,
+  conform.nvim, and TODO comment highlighting.
 - **Looks & feel** — Everforest colorscheme, nerdfont icons, and a curated set of
   keybindings documented below.
 
@@ -160,21 +160,11 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>gg` (normal/visual) | Open git link | `plugins/gitlinker.lua` |
 | `<leader>gc` (normal) | Search git commits log | `plugins/fzf.lua` |
 | `<leader>gr` (normal) | Search git reflog | `plugins/fzf.lua` |
-| `<leader>gd` (normal) | CodeDiff: compare working tree with HEAD (uncommitted changes) | `plugins/codediff.lua` |
-| `]e` (normal, Git buffer) | next Git hunk | `plugins/git.lua` |
-| `[e` (normal, Git buffer) | previous Git hunk | `plugins/git.lua` |
-| `q` (CodeDiff view) | close diff tab | `plugins/codediff.lua` |
-| `]b` (CodeDiff view) | next change block | `plugins/codediff.lua` |
-| `[b` (CodeDiff view) | previous change block | `plugins/codediff.lua` |
-| `]f` (CodeDiff view) | next file | `plugins/codediff.lua` |
-| `[f` (CodeDiff view) | previous file | `plugins/codediff.lua` |
-| `do` (CodeDiff view) | get changes from the other side | `plugins/codediff.lua` |
-| `dp` (CodeDiff view) | push changes to the other side | `plugins/codediff.lua` |
-| `t` (CodeDiff view) | toggle diff layout | `plugins/codediff.lua` |
-| `gc` (CodeDiff view) | toggle compact mode | `plugins/codediff.lua` |
-| `-` (CodeDiff view) | stage/unstage current file | `plugins/codediff.lua` |
-| `gf` (CodeDiff view) | open file in previous tab | `plugins/codediff.lua` |
-| `g?` (CodeDiff view) | show CodeDiff help | `plugins/codediff.lua` |
+| `<leader>gd` (normal) | Diffview: compare working tree with HEAD (uncommitted changes) | `plugins/diff-view.lua` |
+| `<A-j>` (normal/visual) | Move line/block down | `plugins/move.lua` |
+| `<A-k>` (normal/visual) | Move line/block up | `plugins/move.lua` |
+| `<A-h>` (normal/visual) | Move word/horizontal block left | `plugins/move.lua` |
+| `<A-l>` (normal/visual) | Move word/horizontal block right | `plugins/move.lua` |
 
 ## tree-sitter textobjects
 
@@ -220,7 +210,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim) - Find and replace across workspace
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git integration with signs
 - [gitlinker.nvim](https://github.com/linrongbin16/gitlinker.nvim) - Generate shareable links to code on GitHub, GitLab, etc.
-- [codediff.nvim](https://github.com/esmuellert/codediff.nvim) - Side-by-side diff
+- [diffview-plus.nvim](https://github.com/dlyongemallo/diffview-plus.nvim) - Side-by-side diff
 - [conform.nvim](https://github.com/stevearc/conform.nvim) - Formatting framework
 - [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) - LSP configuration with Mason
 - [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim) - Enhanced LSP interface and workflows
