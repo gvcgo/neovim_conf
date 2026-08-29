@@ -1,6 +1,9 @@
 return {
 	"smjonas/inc-rename.nvim",
-
+	dependencies = {
+		"folke/snacks.nvim",
+	},
+	event = "VeryLazy",
 	keys = {
 		{
 			"<leader>r",
