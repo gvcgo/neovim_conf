@@ -28,6 +28,21 @@ return {
 			mode = "n",
 		},
 	},
+	config = function(_, opts)
+		-- Swap sides: put the newer side ("b" = working tree) on the left,
+		-- older side ("a" = HEAD) on the right. `diff2_horizontal` hardcodes
+		-- "a" left / "b" right, so override its window-creation order.
+		local diffview = require("diffview") -- bootstrap: sets up DiffviewGlobal
+		local async = require("diffview.async")
+		local Diff2Hor = require("diffview.scene.layouts.diff_2_hor").Diff2Hor
+		Diff2Hor.create = async.void(function(self, pivot)
+			async.await(self:create_wins(pivot, {
+				{ "b", "aboveleft vsp" },
+				{ "a", "aboveleft vsp" },
+			}, { "b", "a" }))
+		end)
+		diffview.setup(opts)
+	end,
 	opts = {
 		enhanced_diff_hl = true,
 		use_icons = true,
@@ -78,10 +93,25 @@ return {
 				},
 				{ "n", "t", "<Cmd>DiffviewCycleLayout<CR>", { desc = "Toggle layout" } },
 				{ "n", "gc", "za", { desc = "Toggle fold (compact mode)" } },
-				{ "n", "gf", "<Cmd>DiffviewGotoFileEdit<CR>", { desc = "Open file in previous tab" } },
+				{
+					"n",
+					"gf",
+					function()
+						require("diffview.actions").goto_file_edit_close()
+					end,
+					{ desc = "Open file in previous tab and close diffview" },
+				},
 				{ "n", "g?", "<Cmd>DiffviewOpenHelp<CR>", { desc = "Show keybinding help" } },
 			},
 			file_panel = {
+				{
+					"n",
+					"gf",
+					function()
+						require("diffview.actions").goto_file_edit_close()
+					end,
+					{ desc = "Open file in previous tab and close diffview" },
+				},
 				{ "n", "-", "<Cmd>DiffviewToggleStageEntry<CR>", { desc = "Stage/unstage the current file" } },
 				{ "n", "q", "<Cmd>DiffviewClose<CR>", { desc = "Close the diff view" } },
 				{ "n", "]f", "<Cmd>DiffviewSelectNextEntry<CR>", { desc = "Jump to next file" } },
