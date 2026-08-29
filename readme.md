@@ -161,10 +161,8 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>gc` (normal) | Search git commits log | `plugins/fzf.lua` |
 | `<leader>gr` (normal) | Search git reflog | `plugins/fzf.lua` |
 | `<leader>gd` (normal) | Diffview: compare working tree with HEAD (uncommitted changes) | `plugins/diff-view.lua` |
-| `<A-j>` (normal/visual) | Move line/block down | `plugins/move.lua` |
-| `<A-k>` (normal/visual) | Move line/block up | `plugins/move.lua` |
-| `<A-h>` (normal/visual) | Move word/horizontal block left | `plugins/move.lua` |
-| `<A-l>` (normal/visual) | Move word/horizontal block right | `plugins/move.lua` |
+| `]e` (normal) | goto next git hunk | `plugins/git.lua` |
+| `[e` (normal) | goto previous git hunk | `plugins/git.lua` |
 
 ## tree-sitter textobjects
 

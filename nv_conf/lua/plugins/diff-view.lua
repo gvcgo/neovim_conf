@@ -72,6 +72,8 @@ return {
 			view = {
 				{ "n", "q", "<Cmd>DiffviewClose<CR>", { desc = "Close the diff view" } },
 				{ "n", "]b", "]c", { desc = "Jump to next change block (hunk)" } },
+				{ "n", "<leader>h", "<C-w>h", { desc = "Focus left diff view" } },
+				{ "n", "<leader>l", "<C-w>l", { desc = "Focus right diff view" } },
 				{ "n", "[b", "[c", { desc = "Jump to previous change block (hunk)" } },
 				{ "n", "]f", "<Cmd>DiffviewSelectNextEntry<CR>", { desc = "Jump to next file" } },
 				{ "n", "[f", "<Cmd>DiffviewSelectPrevEntry<CR>", { desc = "Jump to previous file" } },
@@ -112,6 +114,8 @@ return {
 					end,
 					{ desc = "Open file in previous tab and close diffview" },
 				},
+				{ "n", "<leader>h", "<C-w>h", { desc = "Focus left diff view" } },
+				{ "n", "<leader>l", "<C-w>l", { desc = "Focus right diff view" } },
 				{ "n", "-", "<Cmd>DiffviewToggleStageEntry<CR>", { desc = "Stage/unstage the current file" } },
 				{ "n", "q", "<Cmd>DiffviewClose<CR>", { desc = "Close the diff view" } },
 				{ "n", "]f", "<Cmd>DiffviewSelectNextEntry<CR>", { desc = "Jump to next file" } },
