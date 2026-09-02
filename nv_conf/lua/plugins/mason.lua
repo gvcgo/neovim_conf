@@ -7,7 +7,7 @@ return {
 			"gopls",
 			"rust_analyzer",
 			"pyright",
-			"ruff",
+			-- "ruff",
 			"ts_ls",
 			"bashls",
 			"yamlls",
