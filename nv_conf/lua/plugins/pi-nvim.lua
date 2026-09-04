@@ -1,4 +1,10 @@
-local omp_cmd = "omp"
+local function omp_cmd()
+	local profile = vim.env.OMP_PROFILE
+	if profile then
+		return string.format("omp --profile %s", profile)
+	end
+	return "omp"
+end
 
 local function omp_opts()
 	return {
@@ -9,15 +15,13 @@ local function omp_opts()
 			keys = {
 				{ "<Up>", "<C-u>", desc = "Scroll up (half page)" },
 				{ "<Down>", "<C-d>", desc = "Scroll down (half page)" },
-				-- { "<C-b>", "<C-b>", desc = "Scroll up (page)" },
-				-- { "<C-f>", "<C-f>", desc = "Scroll down (page)" },
 			},
 		},
 	}
 end
 
 local function omp_terminal()
-	return require("snacks.terminal").get(omp_cmd, { create = false })
+	return require("snacks.terminal").get(omp_cmd(), { create = false })
 end
 
 local function ensure_omp()
@@ -26,7 +30,7 @@ local function ensure_omp()
 		return terminal
 	end
 
-	return require("snacks.terminal").open(omp_cmd, omp_opts())
+	return require("snacks.terminal").open(omp_cmd(), omp_opts())
 end
 
 local function send_to_omp(message, retry)
@@ -217,7 +221,7 @@ return {
 		{
 			"<leader>.",
 			function()
-				require("snacks.terminal").toggle(omp_cmd, omp_opts())
+				require("snacks.terminal").toggle(omp_cmd(), omp_opts())
 			end,
 			desc = "Toggle Oh My Pi",
 			mode = { "n", "v", "t" },

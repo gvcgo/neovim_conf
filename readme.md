@@ -56,6 +56,19 @@ curl -fsSL https://raw.githubusercontent.com/gvcgo/neovim_conf/refs/heads/main/i
 bun install -g @oh-my-pi/pi-coding-agent
 ```
 
+## Oh My Pi Profile
+
+Set `OMP_PROFILE` before starting Neovim to open Oh My Pi with a specific
+profile:
+
+```bash
+export OMP_PROFILE=your-profile
+nvim
+```
+
+When `OMP_PROFILE` is set, the Oh My Pi integration runs
+`omp --profile your-profile`. If it is unset, it runs `omp` without a profile.
+
 ## Post-Install(tree-sitter plugins needed by this project)
 
 ```bash
