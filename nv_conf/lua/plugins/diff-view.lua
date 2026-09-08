@@ -21,10 +21,13 @@ return {
 					return
 				end
 
-				vim.notify("Comparing working tree with HEAD (uncommitted changes only)", vim.log.levels.INFO)
-				vim.cmd("DiffviewOpen HEAD")
+				vim.notify(
+					"Comparing working tree with index (uncommitted changes and untracked files)",
+					vim.log.levels.INFO
+				)
+				vim.cmd("DiffviewOpen")
 			end,
-			desc = "Diffview: Compare working tree with HEAD (uncommitted changes)",
+			desc = "Diffview: Compare working tree with index (uncommitted changes and untracked files)",
 			mode = "n",
 		},
 	},
@@ -66,6 +69,12 @@ return {
 		},
 
 		watch_index = true,
+
+		hooks = {
+			diff_buf_win_enter = function(_, winid)
+				vim.api.nvim_set_option_value("cursorlineopt", "number", { scope = "local", win = winid })
+			end,
+		},
 
 		keymaps = {
 			disable_defaults = false,

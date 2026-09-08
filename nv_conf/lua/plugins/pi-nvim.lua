@@ -167,47 +167,7 @@ local function run_pi_command(command)
 			end
 		end)
 	end
-
-	if visual_range then
-		execute()
-		return
-	end
-
-	local attempts = 0
-	local wait_for_session
-	wait_for_session = function()
-		attempts = attempts + 1
-		if attempts >= 50 then
-			execute()
-			return
-		end
-
-		local socket_path = require("pi-nvim").get_socket_path()
-		if not socket_path then
-			vim.defer_fn(wait_for_session, 100)
-			return
-		end
-
-		local uv = vim.uv or vim.loop
-		local client = uv.new_pipe(false)
-		if not client then
-			vim.defer_fn(wait_for_session, 100)
-			return
-		end
-
-		client:connect(socket_path, function(err)
-			client:close()
-			vim.schedule(function()
-				if err then
-					vim.defer_fn(wait_for_session, 100)
-				else
-					execute()
-				end
-			end)
-		end)
-	end
-
-	wait_for_session()
+	execute()
 end
 
 return {
