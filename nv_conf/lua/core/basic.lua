@@ -25,6 +25,12 @@ vim.opt.signcolumn = "yes"
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+local function find_files()
+	vim.schedule(function()
+		require("fzf-lua").files()
+	end)
+end
+
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
 		local arg = vim.fn.argv(0)
@@ -35,11 +41,20 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		vim.cmd.cd(arg)
 		vim.bo.buflisted = false
 
-		-- vim.schedule(function()
-		-- 	require("telescope.builtin").find_files()
-		-- end)
-		vim.schedule(function()
-			require("fzf-lua").files()
-		end)
+		-- fzf-lua is lazy-loaded, so `fzf.setup()` (lua/plugins/fzf.lua) has not
+		-- run yet when VimEnter fires. Requiring the plugin here can hand back the
+		-- module without its config, which leaves the picker on fzf-lua's stock
+		-- options: `fd` then skips hidden files and honors .gitignore, so the list
+		-- comes up empty even though the directory has files. Wait for lazy.nvim's
+		-- VeryLazy event so the picker always uses the configured options.
+		if vim.g.did_very_lazy then
+			find_files()
+		else
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "VeryLazy",
+				once = true,
+				callback = find_files,
+			})
+		end
 	end,
 })
