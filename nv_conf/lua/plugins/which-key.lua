@@ -13,6 +13,7 @@ return {
 
 		-- Window appearance options
 		win = {
+			width = 1 / 3, -- Use one-third of Neovim's width
 			no_overlap = true, -- Prevent popup from overlapping the cursor
 			col = math.huge, -- Align popup to the right
 			padding = { 1, 2 }, -- Window padding [top/bottom, right/left]
