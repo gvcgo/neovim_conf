@@ -14,6 +14,7 @@ return {
 		-- Window appearance options
 		win = {
 			no_overlap = true, -- Prevent popup from overlapping the cursor
+			col = math.huge, -- Align popup to the right
 			padding = { 1, 2 }, -- Window padding [top/bottom, right/left]
 			title = true, -- Show group title
 			title_pos = "center",
