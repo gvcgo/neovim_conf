@@ -5,7 +5,8 @@ This project is a modern, batteries-included Neovim configuration built with
 coding environment out of the box:
 
 - **Editor UX** — fuzzy finding (fzf-lua), file explorer (nvim-tree), enhanced
-  motions (flash.nvim, nvim-spider), buffer/tabline, and a polished statusline.
+  motions (flash.nvim, nvim-spider), keybinding discovery (which-key.nvim),
+  buffer/tabline, and a polished statusline.
 - **LSP & completion** — Mason-managed language servers, lspsaga.nvim workflows,
   incremental symbol renaming, and fast blink.cmp completion, all wired into
   treesitter text objects.
@@ -158,6 +159,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `w` (normal/operator/visual) | spider motion w | `plugins/spider.lua` |
 | `e` (normal/operator/visual) | spider motion e | `plugins/spider.lua` |
 | `b` (normal/operator/visual) | spider motion b | `plugins/spider.lua` |
+| `<leader>?` (normal) | Show buffer-local keymaps | `plugins/which-key.lua` |
 | `s` (normal/visual/operator) | Flash | `plugins/flash.lua` |
 | `S` (normal/visual/operator) | Flash Treesitter | `plugins/flash.lua` |
 | `<C-s>` (command) | Toggle Flash Search | `plugins/flash.lua` |
@@ -214,6 +216,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [flash.nvim](https://github.com/folke/flash.nvim) - Lightning-fast motions
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) - Indent line visualization
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - Statusline
+- [which-key.nvim](https://github.com/folke/which-key.nvim) - Keybinding discovery and popup help
 - [noice.nvim](https://github.com/folke/noice.nvim) - UI enhancements and command history
 - [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) - File explorer
 - [everforest-nvim](https://github.com/neanias/everforest-nvim) - Everforest colorscheme
