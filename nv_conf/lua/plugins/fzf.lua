@@ -10,6 +10,7 @@ return {
 		fzf.setup({
 			fzf_opts = {
 				["--layout"] = "default",
+				["--cycle"] = true,
 			},
 
 			files = {
