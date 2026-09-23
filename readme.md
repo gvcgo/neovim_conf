@@ -113,7 +113,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>y` (normal/visual) | copy to clipboard | `core/keymap.lua` |
 | `<C-a>` (normal) | select all | `core/keymap.lua` |
 | `<C-s>` (normal) | write | `core/keymap.lua` |
-| `<C-A-n>` (terminal) | Terminal normal mode | `core/keymap.lua` |
+| `<C-n>` (terminal) | Terminal normal mode | `core/keymap.lua` |
 | `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
 | `<A-j>` (normal) | move current line down | `plugins/move.lua` |
 | `<A-k>` (normal) | move current line up | `plugins/move.lua` |

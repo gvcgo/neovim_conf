@@ -12,10 +12,6 @@ local function omp_opts()
 			enter = false,
 			position = "left",
 			width = 0.3,
-			keys = {
-				{ "<Up>", "<C-u>", desc = "Scroll up (half page)" },
-				{ "<Down>", "<C-d>", desc = "Scroll down (half page)" },
-			},
 		},
 	}
 end
