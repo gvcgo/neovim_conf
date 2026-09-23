@@ -113,7 +113,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>y` (normal/visual) | copy to clipboard | `core/keymap.lua` |
 | `<C-a>` (normal) | select all | `core/keymap.lua` |
 | `<C-s>` (normal) | write | `core/keymap.lua` |
-| `<C-n>` (terminal) | Terminal normal mode | `core/keymap.lua` |
+| `<C-j>` (terminal) | Terminal normal mode | `core/keymap.lua` |
 | `<C-x>` (normal) | close current buffer | `plugins/bufferline.lua` |
 | `<A-j>` (normal) | move current line down | `plugins/move.lua` |
 | `<A-k>` (normal) | move current line up | `plugins/move.lua` |
@@ -175,6 +175,20 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>gc` (normal) | Search git commit log | `plugins/fzf.lua` |
 | `<leader>gr` (normal) | Search git reflog | `plugins/fzf.lua` |
 | `<leader>gd` (normal) | Diffview: Compare working tree with index (uncommitted changes and untracked files) | `plugins/diff-view.lua` |
+| `q` (Diffview view/file panel) | Close the diff view | `plugins/diff-view.lua` |
+| `<leader>h` (Diffview view/file panel) | Focus left diff view | `plugins/diff-view.lua` |
+| `<leader>l` (Diffview view/file panel) | Focus right diff view | `plugins/diff-view.lua` |
+| `]e` (Diffview view) | Jump to next change block (hunk) | `plugins/diff-view.lua` |
+| `[e` (Diffview view) | Jump to previous change block (hunk) | `plugins/diff-view.lua` |
+| `]f` (Diffview view/file panel) | Jump to next file | `plugins/diff-view.lua` |
+| `[f` (Diffview view/file panel) | Jump to previous file | `plugins/diff-view.lua` |
+| `do` (Diffview view) | Get changes from the other side | `plugins/diff-view.lua` |
+| `dp` (Diffview view) | Push changes to the other side | `plugins/diff-view.lua` |
+| `t` (Diffview view) | Toggle layout | `plugins/diff-view.lua` |
+| `gc` (Diffview view) | Toggle fold (compact mode) | `plugins/diff-view.lua` |
+| `gf` (Diffview view/file panel) | Open file in previous tab and close diffview | `plugins/diff-view.lua` |
+| `g?` (Diffview view) | Show keybinding help | `plugins/diff-view.lua` |
+| `-` (Diffview file panel) | Stage/unstage the current file | `plugins/diff-view.lua` |
 | `]e` (normal) | Next Git hunk | `plugins/git.lua` |
 | `[e` (normal) | Previous Git hunk | `plugins/git.lua` |
 

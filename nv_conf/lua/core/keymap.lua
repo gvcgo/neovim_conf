@@ -21,4 +21,4 @@ vim.keymap.set("n", "<leader>L", "<cmd>lsp restart<CR>", { desc = "restart lsp" 
 vim.keymap.set("n", "gj", "Lzz", { desc = "goto screen bottom" })
 vim.keymap.set("n", "gk", "Hzz", { desc = "goto screen top" })
 vim.keymap.set("x", "q", "<Esc>", { noremap = true, silent = true, desc = "Exit visual mode" })
-vim.keymap.set("t", "<C-n>", "<C-\\><C-n>", { desc = "Terminal normal mode" })
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n>", { desc = "Terminal normal mode" })
