@@ -90,6 +90,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 
 | keys | desc | lua file |
 |--------|----------|----------|
+| `<F5>` (normal) | restart Neovim and reload all config | `init.lua` |
 | `<leader>wh` (normal) | move to window left | `core/keymap.lua` |
 | `<leader>wj` (normal) | move to window below | `core/keymap.lua` |
 | `<leader>wk` (normal) | move to window above | `core/keymap.lua` |
@@ -99,7 +100,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>wv` (normal) | split window vertically | `core/keymap.lua` |
 | `<leader>wq` (normal) | close current window | `core/keymap.lua` |
 | `jk` (insert) | Esc | `core/keymap.lua` |
-| `q` (visual) | exit visual mode | `core/keymap.lua` |
+| `q` (visual) | Exit visual mode | `core/keymap.lua` |
 | `<CR>` (insert) | Accept Blink completion or fallback | `plugins/blink.lua` |
 | `gl` (normal/visual) | goto line end | `core/keymap.lua` |
 | `gh` (normal/visual) | goto line start | `core/keymap.lua` |
@@ -131,8 +132,6 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>ab` (normal) | Pi: Send buffer | `plugins/pi-nvim.lua` |
 | `<leader>ao` (normal) | Pi: List sessions | `plugins/pi-nvim.lua` |
 | `<leader>f` (normal) | find files | `plugins/fzf.lua` |
-| `<Up>` (Oh My Pi terminal) | scroll up half page | `plugins/pi-nvim.lua` |
-| `<Down>` (Oh My Pi terminal) | scroll down half page | `plugins/pi-nvim.lua` |
 | `<leader>t` (normal) | Search TODOs in current buffer | `plugins/fzf.lua` |
 | `<leader>T` (normal) | Search TODO comments in project | `plugins/fzf.lua` |
 | `<leader>C` (normal) | find nvim config files | `plugins/fzf.lua` |
@@ -140,17 +139,17 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `<leader>k` (normal) | Search keymaps | `plugins/fzf.lua` |
 | `<leader>S` (normal) | Search workspace symbols | `plugins/fzf.lua` |
 | `<leader>s` (normal) | Search document symbols | `plugins/fzf.lua` |
-| `<leader>/` (normal) | Search string (live grep) | `plugins/fzf.lua` |
+| `<leader>/` (normal) | Search string | `plugins/fzf.lua` |
 | `<leader>L` (normal) | restart lsp | `core/keymap.lua` |
-| `K` (normal) | Lspsaga hover documentation | `plugins/lspsaga.lua` |
-| `gr` (normal) | Lspsaga LSP finder | `plugins/lspsaga.lua` |
-| `gi` (normal) | Lspsaga implementation finder | `plugins/lspsaga.lua` |
-| `gs` (normal) | Lspsaga peek definition | `plugins/lspsaga.lua` |
-| `gd` (normal) | Lspsaga goto definition | `plugins/lspsaga.lua` |
-| `<leader>r` (normal) | Incremental LSP rename symbol | `plugins/inc-rename.lua` |
-| `<leader>c` (normal/visual) | Lspsaga code action | `plugins/lspsaga.lua` |
-| `<leader>o` (normal) | Lspsaga toggle outline | `plugins/lspsaga.lua` |
-| `<leader>v` (normal/terminal) | Lspsaga toggle terminal | `plugins/lspsaga.lua` |
+| `K` (normal) | Lspsaga: Hover Documentation | `plugins/lspsaga.lua` |
+| `gr` (normal) | Lspsaga: LSP Finder | `plugins/lspsaga.lua` |
+| `gi` (normal) | Lspsaga: LSP Finder | `plugins/lspsaga.lua` |
+| `gs` (normal) | Lspsaga: Peek Definition | `plugins/lspsaga.lua` |
+| `gd` (normal) | Lspsaga: Goto Definition | `plugins/lspsaga.lua` |
+| `<leader>r` (normal) | Rename Symbol | `plugins/inc-rename.lua` |
+| `<leader>c` (normal/visual) | Lspsaga: Code Action | `plugins/lspsaga.lua` |
+| `<leader>o` (normal) | Lspsaga: Toggle Outline | `plugins/lspsaga.lua` |
+| `<leader>v` (normal/terminal) | Lspsaga: Toggle Terminal | `plugins/lspsaga.lua` |
 | `<C-d>` (Lspsaga preview) | Scroll preview down | `plugins/lspsaga.lua` |
 | `q` (Lspsaga rename UI) | quit rename UI | `plugins/lspsaga.lua` |
 | `<C-u>` (Lspsaga preview) | Scroll preview up | `plugins/lspsaga.lua` |
@@ -159,7 +158,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `w` (normal/operator/visual) | spider motion w | `plugins/spider.lua` |
 | `e` (normal/operator/visual) | spider motion e | `plugins/spider.lua` |
 | `b` (normal/operator/visual) | spider motion b | `plugins/spider.lua` |
-| `<leader>?` (normal) | Show buffer-local keymaps | `plugins/which-key.lua` |
+| `<leader>?` (normal) | Buffer Local Keymaps (which-key) | `plugins/which-key.lua` |
 | `s` (normal/visual/operator) | Flash | `plugins/flash.lua` |
 | `S` (normal/visual/operator) | Flash Treesitter | `plugins/flash.lua` |
 | `<C-s>` (command) | Toggle Flash Search | `plugins/flash.lua` |
@@ -173,11 +172,11 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 | `[m` (normal/visual/operator) | goto previous function end | `plugins/treesitter-textobjects.lua` |
 | `<leader>gb` (normal/visual) | Open git blame link | `plugins/gitlinker.lua` |
 | `<leader>gg` (normal/visual) | Open git link | `plugins/gitlinker.lua` |
-| `<leader>gc` (normal) | Search git commits log | `plugins/fzf.lua` |
+| `<leader>gc` (normal) | Search git commit log | `plugins/fzf.lua` |
 | `<leader>gr` (normal) | Search git reflog | `plugins/fzf.lua` |
-| `<leader>gd` (normal) | Diffview: compare working tree with HEAD (uncommitted changes) | `plugins/diff-view.lua` |
-| `]e` (normal) | goto next git hunk | `plugins/git.lua` |
-| `[e` (normal) | goto previous git hunk | `plugins/git.lua` |
+| `<leader>gd` (normal) | Diffview: Compare working tree with index (uncommitted changes and untracked files) | `plugins/diff-view.lua` |
+| `]e` (normal) | Next Git hunk | `plugins/git.lua` |
+| `[e` (normal) | Previous Git hunk | `plugins/git.lua` |
 
 ## tree-sitter textobjects
 
