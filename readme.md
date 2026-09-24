@@ -220,6 +220,7 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 ### Neovim Plugins
 
 - [lazy.nvim](https://github.com/folke/lazy.nvim) - Plugin manager
+- [uni-app.nvim](https://github.com/gvcgo/uni-app.nvim) - Uni-app development support
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Autopairs for Neovim
 - [blink.cmp](https://github.com/saghen/blink.cmp) - Fast completion engine
 - [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - Buffer line/tabline
@@ -250,16 +251,17 @@ alias OffProxy="unset http_proxy;unset https_proxy"
 - [~~opencode.nvim~~](https://github.com/nickjvandyke/opencode.nvim) - AI-powered coding assistant
 - [~~dsh.nvim~~](https://github.com/AlbinZhu/dsh.nvim) - DeepSeek Harness (dsh) coding agent integration
 
-### Plugin Dependencies
+### Neovim Dependencies
 
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - Utility library
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - Web devicons
 - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - Snippet collection
 - [mason.nvim](https://github.com/mason-org/mason.nvim) - Package manager
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - LSP configurations
+- [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippet engine
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - UI component library
 - [nvim-notify](https://github.com/rcarriga/nvim-notify) - Notification system
-- [snacks.nvim](https://github.com/folke/snacks.nvim) - UI components for OhMyPi
+- [snacks.nvim](https://github.com/folke/snacks.nvim) - UI components and terminal support
 
 ### Other References
 
