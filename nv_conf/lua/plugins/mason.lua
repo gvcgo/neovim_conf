@@ -18,6 +18,7 @@ return {
 			"marksman",
 			"clangd",
 			"jsonls",
+			"vue_ls",
 		},
 	},
 	dependencies = {
