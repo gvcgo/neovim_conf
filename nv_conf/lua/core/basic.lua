@@ -25,9 +25,21 @@ vim.opt.signcolumn = "yes"
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-local function find_files()
+-- Open fzf-lua's file picker for the directory Neovim was started with.
+local function find_files(cwd)
 	vim.schedule(function()
-		require("fzf-lua").files()
+		-- fzf-lua is lazy-loaded, so neither `fzf.setup()` (lua/plugins/fzf.lua)
+		-- nor the plugin's runtime are ready unless we say so. Waiting for lazy's
+		-- `VeryLazy` event is not deterministic: it can fire before or after
+		-- `VimEnter`, and when it wins the race the picker never opens at all.
+		-- Loading the plugin here is synchronous and idempotent, so the picker
+		-- always runs with the configured options.
+		require("lazy").load({ plugins = { "fzf-lua" } })
+
+		local ok, err = pcall(require("fzf-lua").files, { cwd = cwd })
+		if not ok then
+			vim.notify("failed to open the file picker: " .. tostring(err), vim.log.levels.ERROR)
+		end
 	end)
 end
 
@@ -41,20 +53,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		vim.cmd.cd(arg)
 		vim.bo.buflisted = false
 
-		-- fzf-lua is lazy-loaded, so `fzf.setup()` (lua/plugins/fzf.lua) has not
-		-- run yet when VimEnter fires. Requiring the plugin here can hand back the
-		-- module without its config, which leaves the picker on fzf-lua's stock
-		-- options: `fd` then skips hidden files and honors .gitignore, so the list
-		-- comes up empty even though the directory has files. Wait for lazy.nvim's
-		-- VeryLazy event so the picker always uses the configured options.
-		if vim.g.did_very_lazy then
-			find_files()
-		else
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "VeryLazy",
-				once = true,
-				callback = find_files,
-			})
-		end
+		find_files(vim.fn.getcwd())
 	end,
 })
