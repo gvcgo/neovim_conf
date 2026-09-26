@@ -8,6 +8,9 @@ end
 
 local function omp_opts()
 	return {
+		-- The terminal is a singleton; pin the count so opening it with a count
+		-- prefix cannot spawn a second one.
+		count = 1,
 		win = {
 			enter = false,
 			position = "left",
@@ -16,17 +19,82 @@ local function omp_opts()
 	}
 end
 
+-- Handle on the single omp terminal. `snacks.terminal.get` keys its registry by
+-- command, cwd, env and count, so a lookup after a `:cd` (or with a count
+-- prefix) misses the running terminal and starts a second one.
+local omp_term = nil
+
+-- The running omp terminal, or nil when it was never started or was wiped.
 local function omp_terminal()
-	return require("snacks.terminal").get(omp_cmd(), { create = false })
+	local terminal = omp_term
+	if terminal and terminal:buf_valid() then
+		return terminal
+	end
+	omp_term = nil
+	return nil
 end
 
+-- The omp terminal, starting it when it is not running yet.
 local function ensure_omp()
 	local terminal = omp_terminal()
 	if terminal then
 		return terminal
 	end
 
-	return require("snacks.terminal").open(omp_cmd(), omp_opts())
+	omp_term = require("snacks.terminal").open(omp_cmd(), omp_opts())
+	return omp_term
+end
+
+-- Close the terminal window, keeping the terminal buffer (and the omp process)
+-- alive.
+-- Closing the last window of a tab fails with E444, in which case snacks splits
+-- the terminal buffer into a new full-screen window: the terminal stays visible
+-- and every further toggle stacks another window showing it. Hand the tab an
+-- editor window to fall back on before closing the terminal window, and let
+-- snacks close its own window so its `fixbuf` guard stays out of the way.
+local function hide_omp(terminal)
+	local win = terminal.win
+	local tab = vim.api.nvim_win_get_tabpage(win)
+	if #vim.api.nvim_tabpage_list_wins(tab) > 1 then
+		terminal:hide()
+		return
+	end
+
+	local editor_win = vim.api.nvim_win_call(win, function()
+		vim.cmd("silent keepalt vnew")
+		return vim.api.nvim_get_current_win()
+	end)
+	-- Window options are inherited from the split parent; drop the winbar that
+	-- snacks set up for the terminal.
+	vim.api.nvim_set_option_value("winbar", vim.go.winbar, { win = editor_win })
+
+	terminal:hide()
+
+	-- Focus the new window, but never jump to another tab to do so.
+	local valid = vim.api.nvim_win_is_valid(editor_win)
+	if valid and vim.api.nvim_win_get_tabpage(editor_win) == vim.api.nvim_get_current_tabpage() then
+		vim.api.nvim_set_current_win(editor_win)
+	end
+end
+
+local function toggle_omp()
+	local terminal = omp_terminal()
+	if terminal and terminal:win_valid() then
+		hide_omp(terminal)
+		return
+	end
+
+	ensure_omp():show()
+end
+
+-- Show the terminal window (starting the terminal when needed) and focus it.
+local function focus_omp()
+	local terminal = ensure_omp()
+	terminal:show()
+	terminal:focus()
+	if vim.api.nvim_get_current_buf() == terminal.buf then
+		vim.cmd("startinsert")
+	end
 end
 
 local function send_to_omp(message, retry)
@@ -176,26 +244,13 @@ return {
 	keys = {
 		{
 			"<leader>.",
-			function()
-				require("snacks.terminal").toggle(omp_cmd(), omp_opts())
-			end,
+			toggle_omp,
 			desc = "Toggle Oh My Pi",
 			mode = { "n", "v", "t" },
 		},
 		{
 			"<C-S-o>",
-			function()
-				for _, win in ipairs(vim.api.nvim_list_wins()) do
-					local buf = vim.api.nvim_win_get_buf(win)
-					local buf_name = vim.api.nvim_buf_get_name(buf)
-					if vim.bo[buf].buftype == "terminal" and buf_name:find("omp") then
-						vim.api.nvim_set_current_win(win)
-						vim.cmd("startinsert") -- Auto-enter insert mode
-						return
-					end
-				end
-				vim.notify("OMP terminal window not found", vim.log.levels.warn)
-			end,
+			focus_omp,
 			desc = "Jump to OMP Terminal",
 			mode = { "n", "v" },
 		},
