@@ -6,6 +6,9 @@ local function omp_cmd()
 	return "omp"
 end
 
+-- Share of the editor width the terminal window takes.
+local OMP_WIDTH = 0.3
+
 local function omp_opts()
 	return {
 		-- The terminal is a singleton; pin the count so opening it with a count
@@ -14,7 +17,7 @@ local function omp_opts()
 		win = {
 			enter = false,
 			position = "left",
-			width = 0.3,
+			width = OMP_WIDTH,
 		},
 	}
 end
@@ -75,6 +78,38 @@ local function hide_omp(terminal)
 	if valid and vim.api.nvim_win_get_tabpage(editor_win) == vim.api.nvim_get_current_tabpage() then
 		vim.api.nvim_set_current_win(editor_win)
 	end
+end
+
+-- Closing a window (`:q`, `<C-w>c`) or a buffer that closes its window leaves
+-- the terminal alone in the tab, where a single window fills the whole area:
+-- it cannot keep its sidebar width. Hand the tab a fresh editor window and
+-- restore the terminal width so closing anything keeps the layout.
+local function restore_omp_layout()
+	vim.schedule(function()
+		local terminal = omp_terminal()
+		if not terminal or not terminal:win_valid() then
+			return
+		end
+
+		local tab = vim.api.nvim_win_get_tabpage(terminal.win)
+		if #vim.api.nvim_tabpage_list_wins(tab) > 1 then
+			return
+		end
+
+		local editor_win = vim.api.nvim_win_call(terminal.win, function()
+			vim.cmd("silent keepalt rightbelow vnew")
+			return vim.api.nvim_get_current_win()
+		end)
+		-- Window options are inherited from the split parent; drop the winbar
+		-- that snacks set up for the terminal.
+		vim.api.nvim_set_option_value("winbar", vim.go.winbar, { win = editor_win })
+		vim.api.nvim_win_set_width(terminal.win, math.max(1, math.floor(vim.o.columns * OMP_WIDTH)))
+
+		-- The terminal was the current window here, and snacks starts insert
+		-- mode whenever it is entered; leave focus in the editor window.
+		vim.api.nvim_set_current_win(editor_win)
+		vim.cmd("stopinsert")
+	end)
 end
 
 local function toggle_omp()
@@ -319,5 +354,12 @@ return {
 			set_default_keymaps = false,
 		})
 		bridge_pi_prompt_to_omp()
+
+		-- The terminal window must never be a tab's only window; see
+		-- `restore_omp_layout`.
+		vim.api.nvim_create_autocmd("WinClosed", {
+			group = vim.api.nvim_create_augroup("omp_layout", { clear = true }),
+			callback = restore_omp_layout,
+		})
 	end,
 }
