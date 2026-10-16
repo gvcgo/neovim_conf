@@ -48,6 +48,77 @@ local function ensure_omp()
 	return omp_term
 end
 
+-- A buffer an editor window can show: a real file, not the terminal or another
+-- plugin's scratch buffer (nvim-tree, quickfix, ...).
+local function usable_buffer(buf)
+	return buf
+		and buf > 0
+		and vim.api.nvim_buf_is_valid(buf)
+		and vim.api.nvim_buf_is_loaded(buf)
+		and vim.bo[buf].buflisted
+		and vim.bo[buf].buftype == ""
+		and vim.api.nvim_buf_get_name(buf) ~= ""
+end
+
+-- The buffer a window shows and the buffer it showed before it ({ buf }, { alt }).
+local function window_buffers(win)
+	if not vim.api.nvim_win_is_valid(win) then
+		return nil
+	end
+	return {
+		buf = vim.api.nvim_win_get_buf(win),
+		alt = vim.api.nvim_win_call(win, function()
+			return vim.fn.bufnr("#")
+		end),
+	}
+end
+
+-- The buffer an editor window should show when it cannot keep the one it had:
+-- the buffer the window showed before its last one, else the most recently used
+-- editor buffer. Nil when the session has nothing left to show. `closed.buf`
+-- itself never comes back, so closing a window (`:q`) does not undo itself.
+local function previous_buffer(closed)
+	if closed and closed.alt ~= closed.buf and usable_buffer(closed.alt) then
+		return closed.alt
+	end
+
+	local best
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if usable_buffer(buf) and (not closed or buf ~= closed.buf) then
+			local lastused = vim.fn.getbufinfo(buf)[1].lastused
+			if not best or lastused >= best.lastused then
+				best = { buf = buf, lastused = lastused }
+			end
+		end
+	end
+	return best and best.buf
+end
+
+-- Split an editor window off the terminal window, so a tab whose only window
+-- was the terminal gets a window that is not the terminal.
+-- The window options are inherited from the split parent, so drop the winbar
+-- snacks set up for the terminal. `vnew` leaves a listed `[No Name]` buffer
+-- that shows up in the bufferline, `:ls` and `:bnext` as if the user had opened
+-- it, so keep that buffer out of the buffer list and let `bufhidden` wipe it:
+-- either `buf` takes the window over right away, or the placeholder stays until
+-- the window shows something else.
+local function editor_split(terminal, cmd, buf)
+	local win = vim.api.nvim_win_call(terminal.win, function()
+		vim.cmd(cmd)
+		return vim.api.nvim_get_current_win()
+	end)
+	vim.api.nvim_set_option_value("winbar", vim.go.winbar, { win = win })
+
+	local placeholder = vim.api.nvim_win_get_buf(win)
+	vim.bo[placeholder].buflisted = false
+	vim.bo[placeholder].bufhidden = "wipe"
+
+	if usable_buffer(buf) then
+		vim.api.nvim_win_set_buf(win, buf)
+	end
+	return win
+end
+
 -- Close the terminal window, keeping the terminal buffer (and the omp process)
 -- alive.
 -- Closing the last window of a tab fails with E444, in which case snacks splits
@@ -63,13 +134,7 @@ local function hide_omp(terminal)
 		return
 	end
 
-	local editor_win = vim.api.nvim_win_call(win, function()
-		vim.cmd("silent keepalt vnew")
-		return vim.api.nvim_get_current_win()
-	end)
-	-- Window options are inherited from the split parent; drop the winbar that
-	-- snacks set up for the terminal.
-	vim.api.nvim_set_option_value("winbar", vim.go.winbar, { win = editor_win })
+	local editor_win = editor_split(terminal, "silent keepalt vnew", previous_buffer(window_buffers(win)))
 
 	terminal:hide()
 
@@ -82,9 +147,10 @@ end
 
 -- Closing a window (`:q`, `<C-w>c`) or a buffer that closes its window leaves
 -- the terminal alone in the tab, where a single window fills the whole area:
--- it cannot keep its sidebar width. Hand the tab a fresh editor window and
--- restore the terminal width so closing anything keeps the layout.
-local function restore_omp_layout()
+-- it cannot keep its sidebar width. Hand the tab a fresh editor window, showing
+-- the buffer that window had before (`closed`), and restore the terminal width
+-- so closing anything keeps the layout.
+local function restore_omp_layout(closed)
 	vim.schedule(function()
 		local terminal = omp_terminal()
 		if not terminal or not terminal:win_valid() then
@@ -96,13 +162,7 @@ local function restore_omp_layout()
 			return
 		end
 
-		local editor_win = vim.api.nvim_win_call(terminal.win, function()
-			vim.cmd("silent keepalt rightbelow vnew")
-			return vim.api.nvim_get_current_win()
-		end)
-		-- Window options are inherited from the split parent; drop the winbar
-		-- that snacks set up for the terminal.
-		vim.api.nvim_set_option_value("winbar", vim.go.winbar, { win = editor_win })
+		local editor_win = editor_split(terminal, "silent keepalt rightbelow vnew", previous_buffer(closed))
 		vim.api.nvim_win_set_width(terminal.win, math.max(1, math.floor(vim.o.columns * OMP_WIDTH)))
 
 		-- The terminal was the current window here, and snacks starts insert
@@ -356,10 +416,13 @@ return {
 		bridge_pi_prompt_to_omp()
 
 		-- The terminal window must never be a tab's only window; see
-		-- `restore_omp_layout`.
+		-- `restore_omp_layout`. `WinClosed` still resolves the closing window, so
+		-- read what it showed here, before it is gone for good.
 		vim.api.nvim_create_autocmd("WinClosed", {
 			group = vim.api.nvim_create_augroup("omp_layout", { clear = true }),
-			callback = restore_omp_layout,
+			callback = function(args)
+				restore_omp_layout(window_buffers(tonumber(args.match)))
+			end,
 		})
 	end,
 }
