@@ -80,3 +80,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		find_files(vim.fn.getcwd())
 	end,
 })
+
+-- Check whether files changed outside Neovim when focus or buffer state changes.
+-- `checktime` reloads unmodified buffers automatically; `autoread` enables it.
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+	command = "checktime",
+})
