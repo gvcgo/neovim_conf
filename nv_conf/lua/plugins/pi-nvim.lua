@@ -7,7 +7,7 @@ local function omp_cmd()
 end
 
 -- Share of the editor width the terminal window takes.
-local OMP_WIDTH = 0.3
+local OMP_WIDTH = 0.35
 
 local function omp_opts()
 	return {
